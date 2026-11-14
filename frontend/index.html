@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Outage Router</title>
-  <link rel="stylesheet" href="vendor/leaflet.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,6 +16,11 @@
         <option value="contractor_02">Contractor</option>
         <option value="lead_01">Lead</option>
       </select>
+    </label>
+    <label class="switch" title="Turn retrieval of past lessons on or off">
+      <input type="checkbox" id="memory" checked>
+      <span class="track"><span class="knob"></span></span>
+      <span id="memlabel">Memory on</span>
     </label>
   </header>
 
@@ -33,9 +37,17 @@
       <ul id="issues" class="issues"></ul>
 
       <div id="riskbox" hidden>
-        <h2>Outage risk</h2>
+        <h2>Outage risk <small id="memtag" class="memtag"></small></h2>
         <div class="bigrow"><span id="pct" class="big">-</span><span id="cls" class="cls"></span></div>
         <p id="riskinfo" class="muted"></p>
+
+        <h2>Memory on vs. memory off</h2>
+        <div class="vs">
+          <div class="side on"><div class="lbl">Memory on</div><div id="vs-on" class="num">-</div><div id="vs-on-sub" class="muted"></div></div>
+          <div class="side off"><div class="lbl">Memory off</div><div id="vs-off" class="num">-</div><div id="vs-off-sub" class="muted"></div></div>
+        </div>
+        <table class="vstable"><thead><tr><th>Task</th><th>On</th><th>Off</th><th>Evidence</th></tr></thead><tbody id="vs-rows"></tbody></table>
+        <p class="muted">Same schedule, same scoring. The only difference is whether vector search over past lessons runs.</p>
       </div>
     </section>
 
@@ -51,14 +63,51 @@
     </section>
 
     <section class="card">
-      <h2>Past failure zones</h2>
-      <div id="map"></div>
-      <p class="muted">Darker means more delay in past outages, plus the risk on tasks in this schedule. Unit positions are illustrative.</p>
+      <h2>Station heatmap</h2>
+      <div class="plant" id="plant">
+        <svg id="plant-svg" viewBox="0 0 1000 900" aria-label="Plan view of four reactor units"></svg>
+        <canvas id="heat"></canvas>
+        <div id="tip" class="tip" hidden></div>
+      </div>
+      <div class="legend"><span>Low</span><div class="bar"></div><span>High</span></div>
+      <p class="muted">Hot spots are delays from past outages that your role may see, plus the risk on tasks in this schedule. Layout is a simplified mock-up.</p>
+    </section>
+
+    <section class="card wide">
+      <div class="headrow">
+        <h2>Memory governance</h2>
+        <button id="reset" class="ghost small" hidden>Reset demo data</button>
+      </div>
+      <p id="govnote" class="muted"></p>
+      <p id="govmsg" class="govmsg" hidden></p>
+      <div class="tablewrap"><table class="lessons"><thead><tr><th>Lesson</th><th>Status</th><th>Unit</th><th>Title</th><th>Delay</th><th>Access</th><th></th></tr></thead>
+        <tbody id="lessons"></tbody></table></div>
+
+      <details id="addbox">
+        <summary>Add a lesson</summary>
+        <div class="form">
+          <input id="add-title" placeholder="Title, e.g. Crane inspection overlapped with U4 lift plan">
+          <textarea id="add-issue" rows="2" placeholder="What happened"></textarea>
+          <input id="add-rec" placeholder="Recommendation for next time">
+          <div class="row">
+            <select id="add-unit"><option>U1</option><option>U2</option><option>U3</option><option selected>U4</option></select>
+            <input id="add-delay" type="number" min="0" step="0.5" placeholder="Delay (days)">
+            <select id="add-sens"><option value="public">public</option><option value="internal" selected>internal</option><option value="restricted">restricted</option></select>
+          </div>
+          <button id="add">Save as draft</button>
+        </div>
+      </details>
+    </section>
+
+    <section class="card side-log">
+      <h2>Audit log</h2>
+      <p id="auditnote" class="muted"></p>
+      <ol id="audit" class="audit"></ol>
     </section>
   </main>
 
-  <script src="vendor/leaflet.js"></script>
-  <script src="vendor/leaflet-heat.js"></script>
+  <footer id="sys" class="muted"></footer>
+
   <script src="app.js"></script>
 </body>
 </html>
