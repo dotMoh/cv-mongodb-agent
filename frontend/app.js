@@ -223,6 +223,17 @@ $("ask").addEventListener("click", async () => {
 
 // =============================================================== governance
 let can = [];
+// Role rules mirror agent/governance.py ACTIONS, so a refused click answers instantly without a server round trip.
+const NOPE = {
+  contractor_02: "Contractors are read-only. Switch to Lead to approve, correct or forget, or Planner to add a draft.",
+  planner_07: "Planners can add draft lessons but cannot approve, correct or forget them. Switch to Lead for that.",
+};
+function allowed(perm) {
+  if (can.length ? can.includes(perm) : user() === "lead_01" || (perm === "add" && user() === "planner_07")) return true;
+  govMsg(NOPE[user()] || "Your role cannot do that.", true);
+  $("govmsg").scrollIntoView({ block: "nearest" });
+  return false;
+}
 function govMsg(text, err = false) {
   const m = $("govmsg");
   m.textContent = text; m.className = `govmsg${err ? " err" : ""}`; m.hidden = false;
@@ -276,6 +287,7 @@ $("lessons").addEventListener("click", async (e) => {
   const b = e.target.closest("button[data-act]");
   if (!b) return;
   const lid = b.dataset.lid, act = b.dataset.act, row = b.closest("tr");
+  if (["approve", "correct", "forget"].includes(act) && !allowed(act)) return;
   if (act === "approve") return govAction("/api/lesson/approve", { lesson_id: lid });
   if (act === "forget") {
     if (!b.classList.contains("armed")) {
@@ -313,7 +325,7 @@ $("lessons").addEventListener("click", async (e) => {
   }
 });
 
-$("add").addEventListener("click", () => govAction("/api/lesson/add", {
+$("add").addEventListener("click", () => allowed("add") && govAction("/api/lesson/add", {
   title: $("add-title").value, issue: $("add-issue").value, recommendation: $("add-rec").value,
   unit: $("add-unit").value, delay_days: $("add-delay").value, sensitivity: $("add-sens").value,
 }).then(() => { ["add-title", "add-issue", "add-rec", "add-delay"].forEach((id) => { $(id).value = ""; }); }));

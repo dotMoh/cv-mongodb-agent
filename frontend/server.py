@@ -217,7 +217,9 @@ def lessons_view(user_id):
 
 def audit_view(user_id, limit=25):
     lead = "history_all" in governance.ACTIONS[_role(user_id)]
-    rows = [e for e in governance.audit_log(400) if lead or e.get("user_id") == user_id][:limit]
+    # Routine reads ("retrieve") are left out so governance actions and denials stay visible.
+    rows = [e for e in governance.audit_log(400)
+            if e.get("action") != "retrieve" and (lead or e.get("user_id") == user_id)][:limit]
     return {"entries": [{k: e.get(k) for k in ("ts", "user_id", "role", "action", "lesson_id", "version", "allowed",
                                                 "detail")} for e in rows], "scope": "everyone" if lead else "you"}
 
