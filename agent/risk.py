@@ -111,3 +111,41 @@ def assess(user_id: str, tasks: list[dict]) -> dict:
         "tasks": rows,
         "hidden_by_policy": len(seen["hidden"]),
     }
+
+
+def heatmap(tasks: list[dict], report: dict, by: str = "task", bucket_hours: int = 2, top: int = 12) -> dict:
+    """Risk over the outage timeline for a heatmap (e.g. plotly go.Heatmap(z=..., x=cols, y=rows)).
+    by="task": the riskiest `top` tasks; by="discipline" | "unit" | "contractor": max task risk per group.
+    Each cell = risk % of the task(s) active in that time bucket, else 0."""
+    from datetime import timedelta
+
+    risk_by_id = {r["task_id"]: r["risk_pct"] for r in report["tasks"]}
+    timed = [t for t in tasks if t.get("start") and t.get("end")]
+    if not timed:
+        return {"rows": [], "cols": [], "z": []}
+    t0 = min(t["start"] for t in timed).replace(minute=0, second=0, microsecond=0)
+    t1 = max(t["end"] for t in timed)
+    cols, cur = [], t0
+    while cur < t1:
+        cols.append(cur)
+        cur += timedelta(hours=bucket_hours)
+    if by == "task":
+        chosen = sorted(timed, key=lambda t: risk_by_id.get(t["id"], 0), reverse=True)[:top]
+        chosen.sort(key=lambda t: t["start"])
+        groups = [(f"{t['id']} {t['name'][:32]}", [t]) for t in chosen]
+    else:
+        g = {}
+        for t in timed:
+            g.setdefault(t.get(by) or "(none)", []).append(t)
+        groups = sorted(g.items())
+    z = []
+    for _, members in groups:
+        row = []
+        for c in cols:
+            c_end = c + timedelta(hours=bucket_hours)
+            active = [risk_by_id.get(t["id"], 0) for t in members
+                      if t["start"] < c_end and (t["end"] > c or (t["end"] == t["start"] and c <= t["start"] < c_end))]
+            row.append(max(active) if active else 0)
+        z.append(row)
+    return {"rows": [label for label, _ in groups], "cols": [c.strftime("%a %H:%M") for c in cols],
+            "col_times": cols, "z": z}
