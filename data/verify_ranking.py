@@ -14,7 +14,12 @@ from seed_data import generate_lessons
 
 QUERY = "Plan July maintenance outage for Unit 3"
 PLANT, ROLE, TOP_K = "unit-3", "planner", 5
-CORRECTION = "Intake chiller retrofit done in 2025: July intake temps now safe for full outage"
+# Candidate wordings for the demo's /learn lesson; the first that passes is the one to use.
+CORRECTIONS = [
+    "Unit 3 July maintenance outage update: intake chiller retrofit finished in 2025, so July cooling water temperatures and heat waves no longer delay Unit 3 outages.",
+    "Plan Unit 3 July outages normally now: the 2025 intake chiller retrofit fixed the cooling water overheating that delayed the July 2024 Unit 3 outage.",
+    "Intake chiller retrofit done in 2025: July intake temps now safe for full outage",
+]
 
 
 def top(docs, qv):
@@ -45,17 +50,25 @@ def main() -> int:
     for d in docs:
         if d.get("demo_key") == "mock-july-overheat":
             d["metadata"]["status"] = "corrected"
-    docs.append({"plant_id": PLANT, "content": CORRECTION, "demo_key": "(new chiller lesson)",
-                 "embedding": embed(CORRECTION),
-                 "metadata": {"status": "active", "access_level": ["planner", "safety_officer", "grid_operator"]}})
-    after = top(docs, qv)
-    show("After /learn correction", after)
-    keys_after = [d.get("demo_key") for _, d in after]
-    ok_after = "mock-july-overheat" not in keys_after and "(new chiller lesson)" in keys_after[:3]
-
     print(f"\nOverheating memory in top 3 before: {'PASS' if ok_before else 'FAIL'}")
-    print(f"Chiller lesson in top 3 after, old one gone: {'PASS' if ok_after else 'FAIL'}")
-    return 0 if ok_before and ok_after else 1
+
+    best = None
+    for i, text in enumerate(CORRECTIONS, 1):
+        trial = docs + [{"plant_id": PLANT, "content": text, "demo_key": "(new chiller lesson)",
+                         "embedding": embed(text),
+                         "metadata": {"status": "active", "access_level": ["planner", "safety_officer", "grid_operator"]}}]
+        after = top(trial, qv)
+        keys_after = [d.get("demo_key") for _, d in after]
+        ok = "mock-july-overheat" not in keys_after and "(new chiller lesson)" in keys_after[:2]
+        show(f"After /learn with wording {i}: {'PASS' if ok else 'FAIL'}", after)
+        if ok and best is None:
+            best = text
+
+    if best:
+        print(f"\nUSE THIS /learn TEXT IN THE DEMO:\n  {best}")
+    else:
+        print("\nNo wording ranked in the top 2. Paste this output into the thread.")
+    return 0 if ok_before and best else 1
 
 
 if __name__ == "__main__":

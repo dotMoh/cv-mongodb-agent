@@ -1,10 +1,30 @@
 """Shared async MongoDB connection (raw async PyMongo, no ODM).
 
-Set MONGODB_URI (Atlas connection string) and optionally MONGODB_DB.
+Reads MONGODB_URI etc. from the environment or from .env in the repo root.
 """
 import os
+from pathlib import Path
 
 from pymongo import AsyncMongoClient
+
+
+def _load_dotenv() -> None:
+    """Read KEY=VALUE lines from the repo-root .env (or data/.env) without overriding
+    variables already set. No extra dependency, works the same on Windows."""
+    here = Path(__file__).resolve().parent
+    for path in (here.parent / ".env", here / ".env"):
+        if not path.is_file():
+            continue
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            value = value.split(" #", 1)[0].strip().strip('"').strip("'")
+            os.environ.setdefault(key.strip(), value)
+
+
+_load_dotenv()
 
 MONGODB_URI = os.environ.get("MONGODB_URI", "mongodb://localhost:27017")
 DB_NAME = os.environ.get("DB_NAME", os.environ.get("MONGODB_DB", "outage_agent"))
