@@ -1,4 +1,26 @@
-# Frontend (Person C)
+# Outage Router (frontend)
+
+One simple Streamlit page on top of the `agent/` package:
+- upload an outage schedule (PDF with a schedule table, Excel, or CSV), or press "Use sample schedule"
+- overall outage risk %, with the top five major risks and their mitigations
+- heatmap of past failure zones (delay days from approved lessons, plus risk on the uploaded tasks)
+- a question box about the risks
+- "Viewing as" Planner / Contractor / Lead, because lessons are filtered by role
+
+## Run (Windows PowerShell, repo root, venv active)
+```powershell
+pip install -r agent/requirements.txt -r frontend/requirements.txt
+streamlit run frontend/app.py
+```
+The theme (white, black, green) is in `.streamlit/config.toml` at the repo root, so run the command from the repo root.
+Samples: `frontend/sample/u4_outage_24h.csv`, `.xlsx`, `.pdf`. The map tiles need internet.
+
+---
+
+# HTML control-room page (index.html / app.js)
+
+The earlier static page is still in this folder.
+
 
 Single page: task box, role and plant pickers, schedule, memories used, Leaflet failure heatmap, and a "Teach the agent" box that calls `/learn` and then re-plans.
 
