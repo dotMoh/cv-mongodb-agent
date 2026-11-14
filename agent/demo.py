@@ -19,10 +19,21 @@ def show(report, n=4):
 
 
 def main():
-    print(f"embeddings: {mode()}")
+    import sys
+
+    from . import config
+    readonly = "--readonly" in sys.argv
+    print(f"embeddings: {mode()}  data: {config.DATA_SOURCE}  {'(read-only check)' if readonly else ''}")
     parsed = schedule_parser.parse(SAMPLE)
     print(f"1. Parsed {SAMPLE.name}: {parsed['summary']}; ambiguities: {len(parsed['ambiguities'])}")
     tasks = parsed["tasks"]
+    if readonly:
+        for user in ("planner_07", "contractor_02", "lead_01"):
+            vis = g.visible_lessons(user)
+            print(f"   {user}: sees {len(vis['lessons'])} approved lessons, {vis['hidden_count']} hidden by policy")
+        print("2. Planner risk assessment:"); show(risk.assess("planner_07", tasks))
+        print("Read-only check done (only audit entries were written).")
+        return
     base = schedules.save_baseline("planner_07", "U4 24h outage", tasks)
     rep = risk.assess("planner_07", tasks)
     print("2. Planner risk assessment:"); show(rep)
