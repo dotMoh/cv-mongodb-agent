@@ -32,6 +32,10 @@ OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.1:8b")
 OLLAMA_TIMEOUT = float(os.getenv("OLLAMA_TIMEOUT", "25"))
 LLM_MODE = os.getenv("LLM_MODE", "auto").lower()                # auto | ollama | fallback
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama").lower()       # ollama | anthropic (key: ANTHROPIC_API_KEY in .env)
+ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-opus-5-5")
+ANTHROPIC_EFFORT = os.getenv("ANTHROPIC_EFFORT", "low")
+ANTHROPIC_TIMEOUT = float(os.getenv("ANTHROPIC_TIMEOUT", "45"))
 
 EMBEDDINGS = os.getenv("EMBEDDINGS", "auto").lower()            # auto | minilm | hash
 EMBED_DIMS = 384

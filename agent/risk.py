@@ -4,6 +4,7 @@ from __future__ import annotations
 from . import governance
 
 NO_MATCH_MESSAGE = "No sufficiently similar historical outage lessons found."
+MEMORY_OFF_MESSAGE = "Memory off: no historical lessons were consulted."
 TOP_K = 5
 SIM_WEIGHT = 0.85          # one perfect match alone gives 85% repeat probability
 NON_CRITICAL_WEIGHT = 0.6  # off-critical-path tasks matter less to the outage
@@ -36,8 +37,9 @@ def successors(tasks: list[dict], task_id: str) -> list[str]:
     return out
 
 
-def assess_task(user_id: str, t: dict, tasks: list[dict], _seen: dict | None = None) -> dict:
-    res = governance.retrieve(user_id, task_query(t), k=TOP_K, log=False)
+def assess_task(user_id: str, t: dict, tasks: list[dict], _seen: dict | None = None, use_memory: bool = True) -> dict:
+    res = governance.retrieve(user_id, task_query(t), k=TOP_K, log=False) if use_memory else \
+        {"lessons": [], "hidden_count": 0, "hidden_ids": []}
     if _seen is not None:
         for l in res["lessons"]:
             _seen["used"].setdefault(l["lesson_id"], l["version"])
@@ -50,9 +52,10 @@ def assess_task(user_id: str, t: dict, tasks: list[dict], _seen: dict | None = N
     base = {"task_id": t["id"], "task_name": t.get("name"), "critical": bool(t.get("critical")),
             "knock_on": successors(tasks, t["id"]), "hidden_matches": res["hidden_count"]}
     if not matches:
+        msg = NO_MATCH_MESSAGE if use_memory else MEMORY_OFF_MESSAGE
         return dict(base, risk_pct=0, classification="None", repeat_probability_pct=0, delay_exposure_days=None,
-                    similarity=None, confidence=None, matches=[], evidence=[], explanation=NO_MATCH_MESSAGE,
-                    mitigation=None, message=NO_MATCH_MESSAGE)
+                    similarity=None, confidence=None, matches=[], evidence=[], explanation=msg,
+                    mitigation=None, message=msg, mitigated=False)
     # Cite the most consequential lesson first: similarity x delay (L-0007's 2.5 days beats a closer 0.5-day lesson).
     matches.sort(key=lambda m: m["similarity"] * max(m["delay_days"], 0.1), reverse=True)
     p_none = 1.0
@@ -81,9 +84,11 @@ def assess_task(user_id: str, t: dict, tasks: list[dict], _seen: dict | None = N
                 message=None)
 
 
-def assess(user_id: str, tasks: list[dict]) -> dict:
+def assess(user_id: str, tasks: list[dict], use_memory: bool = True) -> dict:
+    """use_memory=False skips retrieval entirely (the "Memory off" comparison): every task scores 0%
+    because the agent has no experience to draw on. Nothing is read or audited in that mode."""
     seen = {"used": {}, "hidden": set()}
-    rows = [assess_task(user_id, t, tasks, seen) for t in tasks]
+    rows = [assess_task(user_id, t, tasks, seen, use_memory) for t in tasks]
     rows.sort(key=lambda r: r["risk_pct"], reverse=True)
     for lid, ver in seen["used"].items():
         governance.audit(user_id, "retrieve", lesson_id=lid, version=ver, detail="risk assessment evidence")
@@ -110,6 +115,7 @@ def assess(user_id: str, tasks: list[dict]) -> dict:
         },
         "tasks": rows,
         "hidden_by_policy": len(seen["hidden"]),
+        "memory": use_memory,
     }
 
 
