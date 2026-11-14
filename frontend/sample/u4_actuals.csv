@@ -1,0 +1,4 @@
+task_id,actual_start,actual_end,delay_cause
+A120,2027-03-02 06:00,2027-03-02 09:30,Probe calibration certificate expired and had to be renewed
+A130,2027-03-02 09:30,2027-03-03 06:00,Inspection started late and two tubes needed re-testing
+A160,2027-03-02 14:00,2027-03-03 02:30,

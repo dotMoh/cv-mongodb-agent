@@ -1,0 +1,9 @@
+Activity ID,Activity,Unit,Crew,Discipline,Start,Finish,Predecessors,Critical
+A100,Unit shutdown and cooldown,U4,Operations,Operations,2027-03-01 06:00,2027-03-01 18:00,,Y
+A110,Feedwater valve isolation permit,U4,Operations,Permits,2027-03-01 18:00,2027-03-01 22:00,A100,Y
+A120,Eddy current tooling preparation,U4,Northline Inspection,Inspection,2027-03-02 06:00,2027-03-02 08:00,A110,N
+A130,U4 HX tube inspection,U4,Northline Inspection,Inspection,2027-03-02 08:00,2027-03-02 20:00,A120,Y
+A140,Primary pump seal replacement,U4,Valley Mechanical,Mechanical,2027-03-01 22:00,2027-03-02 14:00,A110,N
+A150,Transformer oil sampling,U4,Valley Electrical,Electrical,2027-03-02 10:00,2027-03-02 16:00,A100,N
+A160,Turbine bearing inspection,U4,Valley Mechanical,Mechanical,2027-03-02 14:00,2027-03-03 02:00,A140,N
+A170,System restoration and restart,U4,Operations,Operations,2027-03-02 20:00,2027-03-03 06:00,A130;A160,Y

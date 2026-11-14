@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outage Router</title>
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Outage <span>Router</span></h1>
+    <p class="tag">Routes your outage plan around the failures of past outages</p>
+    <label class="who">Viewing as
+      <select id="user">
+        <option value="planner_07">Planner</option>
+        <option value="contractor_02">Contractor</option>
+        <option value="lead_01">Lead</option>
+      </select>
+    </label>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Outage schedule</h2>
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept=".pdf,.xlsx,.xls,.csv">
+        <strong>Choose a file</strong> or drop it here
+        <small>Gantt chart export or worksheet: PDF, Excel or CSV</small>
+      </label>
+      <button id="sample" class="ghost">Use sample schedule</button>
+      <p id="status" class="muted"></p>
+      <ul id="issues" class="issues"></ul>
+
+      <div id="riskbox" hidden>
+        <h2>Outage risk</h2>
+        <div class="bigrow"><span id="pct" class="big">-</span><span id="cls" class="cls"></span></div>
+        <p id="riskinfo" class="muted"></p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Major risks</h2>
+      <div id="risks"><p class="muted">Upload a schedule to see its major risks.</p></div>
+      <p id="hidden" class="muted"></p>
+
+      <h2>Ask about the risks</h2>
+      <textarea id="q" rows="3" placeholder="e.g. Could the U4 inspection be affected by previous U3 tooling delays?"></textarea>
+      <button id="ask">Ask</button>
+      <div id="answer" class="answer" hidden></div>
+    </section>
+
+    <section class="card">
+      <h2>Past failure zones</h2>
+      <div id="map"></div>
+      <p class="muted">Darker means more delay in past outages, plus the risk on tasks in this schedule. Unit positions are illustrative.</p>
+    </section>
+  </main>
+
+  <script src="vendor/leaflet.js"></script>
+  <script src="vendor/leaflet-heat.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
