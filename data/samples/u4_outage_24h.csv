@@ -1,0 +1,21 @@
+Task ID,Task Name,Unit,Equipment,Discipline,Contractor,Start,Finish,Duration (h),Predecessors,Critical,Milestone,Permit
+T01,Unit U4 shutdown and cooldown,U4,Reactor unit,Operations,Station operations,2027-03-01 06:00,2027-03-01 08:00,2.0,,Yes,No,
+T02,Electrical isolation and permits,U4,Electrical isolation,Electrical,Station operations,2027-03-01 08:00,2027-03-01 10:00,2.0,T01,Yes,No,WP-401
+T03,Mechanical isolation,U4,Mechanical isolation,Mechanical,Station operations,2027-03-01 08:00,2027-03-01 10:00,2.0,T01,No,No,WP-402
+T04,Drain and vent HX-401,U4,HX-401,Mechanical,Station operations,2027-03-01 10:00,2027-03-01 13:00,3.0,T02;T03,Yes,No,WP-403
+T05,Scaffolding erection HX bay,U4,HX bay scaffold,Access,Apex Access Ltd,2027-03-01 10:00,2027-03-01 14:00,4.0,T02,No,No,
+T06,Insulation removal main steam line,U4,Main steam line,Insulation,Apex Access Ltd,2027-03-01 10:00,2027-03-01 12:00,2.0,T02,No,No,
+T07,Open HX-401 manway and channel head,U4,HX-401,Mechanical,Northline Inspection Services,2027-03-01 14:00,2027-03-01 15:00,1.0,T04;T05,Yes,No,
+T08,Tooling preparation (eddy current probes),U4,HX-401,Inspection,Northline Inspection Services,2027-03-01 15:00,2027-03-01 16:00,1.0,T07,Yes,No,
+T09,U4 HX tube inspection,U4,HX-401,Inspection,Northline Inspection Services,2027-03-01 16:00,2027-03-01 22:00,6.0,T08,Yes,No,
+T10,Tube plugging (as required),U4,HX-401,Mechanical,Northline Inspection Services,2027-03-01 22:00,2027-03-02 00:30,2.5,T09,Yes,No,
+T11,Valve overhaul MV-401,U4,MV-401,Mechanical,Delta Valve Services,2027-03-01 14:00,2027-03-02 02:00,12.0,T03,No,No,WP-404
+T12,Crane lift P-402 motor,U4,Turbine hall crane,Lifting,Station operations,2027-03-01 12:00,2027-03-01 13:00,1.0,T02,No,No,LP-17
+T13,Pump motor replacement P-402,U4,P-402 motor,Electrical,Station operations,2027-03-01 13:00,2027-03-01 19:00,6.0,T12,No,No,
+T14,Electrical testing switchgear,U4,Switchgear,Electrical,Station operations,2027-03-01 19:00,2027-03-01 23:00,4.0,T13,No,No,
+T15,Channel head closure,U4,HX-401,Mechanical,Northline Inspection Services,2027-03-02 00:30,2027-03-02 02:30,2.0,T10,Yes,No,
+T16,Hydrotest HX-401,U4,HX-401,Mechanical,Station operations,2027-03-02 02:30,2027-03-02 04:00,1.5,T15,Yes,No,
+T17,Remove scaffolding HX bay,U4,HX bay scaffold,Access,Apex Access Ltd,2027-03-02 04:00,2027-03-02 05:00,1.0,T16,No,No,
+T18,Remove isolations,U4,Electrical isolation,Operations,Station operations,2027-03-02 04:00,2027-03-02 05:00,1.0,T16;T11;T14,Yes,No,
+T19,Unit restart,U4,Unit startup,Operations,Station operations,2027-03-02 05:00,2027-03-02 06:00,1.0,T18;T17,Yes,No,
+T20,Unit online,U4,Unit startup,Operations,Station operations,2027-03-02 06:00,2027-03-02 06:00,0.0,T19,Yes,Yes,
