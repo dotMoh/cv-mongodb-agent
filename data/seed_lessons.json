@@ -1,0 +1,1690 @@
+{
+  "lessons": [
+    {
+      "lesson_id": "L-0001",
+      "version": 1,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U2",
+      "equipment": "HX-201",
+      "title": "Scaffold blocked lower tube-sheet access",
+      "issue": "The scaffold platform did not reach the lower tube-sheet rows, so it was rebuilt mid-inspection.",
+      "impact": "1 day delay",
+      "recommendation": "Have the inspection lead sign off the scaffold drawing before erection.",
+      "category": "access",
+      "delay_days": 1.0,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 8h, actual 32h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-15T17:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-15T19:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0002",
+      "version": 1,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U1",
+      "equipment": "HX-101",
+      "title": "Eddy current probe calibration left to night shift",
+      "issue": "Probe calibration was left for the incoming night shift, which had no qualified technician. Inspection paused one shift.",
+      "impact": "0.5 day delay",
+      "recommendation": "Complete probe calibration in the same shift as tooling preparation.",
+      "category": "tooling",
+      "delay_days": 0.5,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2023-U1-fall",
+          "detail": "planned 8h, actual 20h"
+        }
+      ],
+      "outage_id": "2023-U1-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-15T18:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-15T20:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0003",
+      "version": 1,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U2",
+      "equipment": "HX-201",
+      "title": "Wrong probe size shipped for HX tube inspection",
+      "issue": "Probes for the wrong tube diameter were shipped. Correct probes arrived 1.5 days later.",
+      "impact": "1.5 day delay",
+      "recommendation": "Check probe size against the unit's tube drawings when tooling is booked.",
+      "category": "tooling",
+      "delay_days": 1.5,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 8h, actual 44h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-15T19:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-15T21:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0004",
+      "version": 1,
+      "job_type": "Tube plugging",
+      "unit": "U3",
+      "equipment": "HX-301",
+      "title": "More tubes plugged than planned",
+      "issue": "Inspection found 3 percent of tubes needing plugs against 1 percent planned; plugging took three times as long.",
+      "impact": "0.5 day delay",
+      "recommendation": "Size plugging contingency from the last two inspections, not one.",
+      "category": "sequencing",
+      "delay_days": 0.5,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 6h, actual 18h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-15T20:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-15T22:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0005",
+      "version": 1,
+      "job_type": "Scaffolding erection",
+      "unit": "U3",
+      "equipment": "HX bay scaffold",
+      "title": "Scaffold erection overlapped drain and vent",
+      "issue": "Scaffold erection in the heat exchanger bay took 20 hours instead of 12 because of congestion with the drain and vent crew.",
+      "impact": "0.4 day delay",
+      "recommendation": "Do not overlap scaffold erection with drain and vent in the same bay.",
+      "category": "access",
+      "delay_days": 0.4,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 12h, actual 20h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-15T21:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-15T23:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0006",
+      "version": 1,
+      "job_type": "Isolation and permits",
+      "unit": "U3",
+      "equipment": "Electrical isolation",
+      "title": "Isolation permits issued four hours late",
+      "issue": "Work permits for the heat exchanger bay were issued late because the isolation list was finalised on the day.",
+      "impact": "0.2 day delay",
+      "recommendation": "Freeze and pre-walk the isolation list 48 hours before shutdown.",
+      "category": "permits",
+      "delay_days": 0.2,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 4h, actual 8h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-15T22:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T00:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0007",
+      "version": 1,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U3",
+      "equipment": "HX-301",
+      "title": "Tooling arrived late for U3 HX inspection",
+      "issue": "Eddy current tooling arrived late for the U3 heat exchanger inspection, costing about 1.5 days.",
+      "impact": "1.5 day delay",
+      "recommendation": "Complete tooling preparation and confirm eddy current probes are on site and calibrated before isolation; add a tooling verification milestone before HX tube inspection.",
+      "category": "tooling",
+      "delay_days": 1.5,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "superseded",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "shift_log",
+          "ref": "U3 night shift 2025-09-14",
+          "detail": "tooling late"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "planner_07",
+      "created_at": "2026-09-15T23:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T01:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0007",
+      "version": 2,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U3",
+      "equipment": "HX-301",
+      "title": "Eddy current probe tooling not on site delayed U3 HX tube inspection",
+      "issue": "Eddy current probe tooling was not on site at isolation, so the U3 heat exchanger (HX) tube inspection start slipped 2.5 days and hit the critical path.",
+      "impact": "2.5 day delay",
+      "recommendation": "Complete tooling preparation and confirm eddy current probes are on site and calibrated before isolation; add a tooling verification milestone before HX tube inspection.",
+      "category": "tooling",
+      "delay_days": 2.5,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 8h, actual 68h"
+        },
+        {
+          "type": "completion_report",
+          "ref": "U3-OCR-2025-09 s4.2",
+          "detail": "2.5 days total incl. probe calibration"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-25T23:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-26T00:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": "Outage completion report confirmed 2.5 days total delay including probe calibration."
+    },
+    {
+      "lesson_id": "L-0008",
+      "version": 1,
+      "job_type": "Crane lift",
+      "unit": "U2",
+      "equipment": "Turbine hall crane",
+      "title": "Crane double-booked between units",
+      "issue": "The turbine hall crane was booked for a U2 pump motor lift and a U1 valve lift in the same window. One lift waited 10 hours.",
+      "impact": "0.4 day delay",
+      "recommendation": "Book the crane in one cross-unit schedule and flag overlapping lifts.",
+      "category": "resources",
+      "delay_days": 0.4,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 4h, actual 14h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T00:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T02:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0009",
+      "version": 1,
+      "job_type": "Valve overhaul",
+      "unit": "U1",
+      "equipment": "MV-101",
+      "title": "Valve seat spares arrived late",
+      "issue": "Replacement valve seats were ordered after the valve was opened. The overhaul waited 1.5 days for spares.",
+      "impact": "1.5 day delay",
+      "recommendation": "Pre-order seats and gaskets for every valve overhaul in scope.",
+      "category": "parts",
+      "delay_days": 1.5,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2023-U1-fall",
+          "detail": "planned 12h, actual 48h"
+        }
+      ],
+      "outage_id": "2023-U1-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T01:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T03:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0010",
+      "version": 1,
+      "job_type": "Channel head closure",
+      "unit": "U3",
+      "equipment": "HX-301",
+      "title": "Midnight handover caused channel head re-torque",
+      "issue": "Channel head closure crossed midnight. The torque record was not handed over and the night shift re-torqued all bolts.",
+      "impact": "0.25 day delay",
+      "recommendation": "Avoid starting closure within two hours of a shift change, or use a signed torque sheet.",
+      "category": "rework",
+      "delay_days": 0.25,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 6h, actual 12h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T02:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T04:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0011",
+      "version": 1,
+      "job_type": "Hydrotest",
+      "unit": "U2",
+      "equipment": "HX-201",
+      "title": "Hydrotest failed after tube plugging",
+      "issue": "A tube plug leaked during hydrotest and the test was repeated after re-plugging.",
+      "impact": "0.5 day delay",
+      "recommendation": "Verify plug seating before hydrotest.",
+      "category": "rework",
+      "delay_days": 0.5,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 4h, actual 16h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T03:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T05:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0012",
+      "version": 1,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U3",
+      "equipment": "HX-301",
+      "title": "Inspection contractor under-resourced",
+      "issue": "Northline Inspection supplied two technicians instead of the contracted four. Commercial claim CC-2025-031 raised.",
+      "impact": "1 day delay",
+      "recommendation": "Confirm named technicians 7 days before outage; apply contract clause 12.",
+      "category": "resources",
+      "delay_days": 1.0,
+      "sensitivity": "restricted",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 8h, actual 32h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T04:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T06:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0013",
+      "version": 1,
+      "job_type": "Isolation and permits",
+      "unit": "U2",
+      "equipment": "Electrical isolation",
+      "title": "Wrong breaker tagged during isolation",
+      "issue": "A wrong breaker was tagged during U2 isolation. Found at verification, no injury. Investigation ongoing.",
+      "impact": "0.3 day delay",
+      "recommendation": "Independently verify every isolation point.",
+      "category": "permits",
+      "delay_days": 0.3,
+      "sensitivity": "restricted",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 4h, actual 11h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T05:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T07:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0014",
+      "version": 1,
+      "job_type": "Crane lift",
+      "unit": "U3",
+      "equipment": "Turbine hall crane",
+      "title": "Crane operator certification lapsed",
+      "issue": "The Apex Access crane operator's certification had lapsed; the lift waited for a certified operator.",
+      "impact": "0.5 day delay",
+      "recommendation": "Check contractor certifications at gate induction.",
+      "category": "resources",
+      "delay_days": 0.5,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 4h, actual 16h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T06:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T08:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0015",
+      "version": 1,
+      "job_type": "Unit shutdown",
+      "unit": "U1",
+      "equipment": "Reactor unit",
+      "title": "Cooldown slower than planned",
+      "issue": "Cooldown to work temperature took 4 hours longer than the plan assumed.",
+      "impact": "0.2 day delay",
+      "recommendation": "Use the cooldown curve from the last outage, not the design value.",
+      "category": "sequencing",
+      "delay_days": 0.2,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2023-U1-fall",
+          "detail": "planned 6h, actual 10h"
+        }
+      ],
+      "outage_id": "2023-U1-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T07:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T09:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0016",
+      "version": 1,
+      "job_type": "Drain and vent",
+      "unit": "U2",
+      "equipment": "HX-201",
+      "title": "Drain and vent slowed by blocked vent valve",
+      "issue": "A vent valve was seized, slowing draining by 4 hours.",
+      "impact": "0.15 day delay",
+      "recommendation": "Stroke-test vent valves in the week before the outage.",
+      "category": "sequencing",
+      "delay_days": 0.15,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 6h, actual 10h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T08:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T10:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0017",
+      "version": 1,
+      "job_type": "Pump motor replacement",
+      "unit": "U3",
+      "equipment": "P-302 motor",
+      "title": "Motor coupling did not fit",
+      "issue": "The replacement motor shipped with a different coupling. A new coupling was machined on site.",
+      "impact": "1 day delay",
+      "recommendation": "Check coupling dimensions on receipt, before the outage.",
+      "category": "parts",
+      "delay_days": 1.0,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 10h, actual 34h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T09:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T11:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0018",
+      "version": 1,
+      "job_type": "Valve overhaul",
+      "unit": "U4",
+      "equipment": "MV-401",
+      "title": "Valve actuator spare missing from stores",
+      "issue": "The stores record showed an actuator spare that was not on the shelf.",
+      "impact": "0.5 day delay",
+      "recommendation": "Physically check critical spares two weeks before the outage.",
+      "category": "parts",
+      "delay_days": 0.5,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2022-U4-spring",
+          "detail": "planned 12h, actual 24h"
+        }
+      ],
+      "outage_id": "2022-U4-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T10:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T12:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0019",
+      "version": 1,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U4",
+      "equipment": "HX-401",
+      "title": "U4 manway bolts seized",
+      "issue": "Manway bolts on HX-401 were seized; opening took an extra 12 hours.",
+      "impact": "0.5 day delay",
+      "recommendation": "Apply penetrating oil and pre-loosen manway bolts at the start of the outage.",
+      "category": "access",
+      "delay_days": 0.5,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2022-U4-spring",
+          "detail": "planned 8h, actual 20h"
+        }
+      ],
+      "outage_id": "2022-U4-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T11:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T13:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0020",
+      "version": 1,
+      "job_type": "Unit restart",
+      "unit": "U2",
+      "equipment": "Unit startup",
+      "title": "Restart held for work order close-out",
+      "issue": "Unit restart waited 5 hours for work order close-out signatures.",
+      "impact": "0.2 day delay",
+      "recommendation": "Track work order close-out daily in the last 48 hours.",
+      "category": "permits",
+      "delay_days": 0.2,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 8h, actual 13h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T12:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T14:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0021",
+      "version": 1,
+      "job_type": "Weld repair",
+      "unit": "U1",
+      "equipment": "Feedwater line",
+      "title": "Certified welder not available on night shift",
+      "issue": "The only certified welder was on days, so a night repair waited a shift.",
+      "impact": "1 day delay",
+      "recommendation": "Roster a certified welder on every shift when weld repair is in scope.",
+      "category": "resources",
+      "delay_days": 1.0,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2023-U1-fall",
+          "detail": "planned 8h, actual 32h"
+        }
+      ],
+      "outage_id": "2023-U1-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T13:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T15:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0022",
+      "version": 1,
+      "job_type": "Insulation removal",
+      "unit": "U3",
+      "equipment": "Main steam line",
+      "title": "Asbestos survey needed before insulation removal",
+      "issue": "Older insulation needed a survey before removal, adding 7 hours.",
+      "impact": "0.3 day delay",
+      "recommendation": "Check the insulation register and book surveys in advance.",
+      "category": "other",
+      "delay_days": 0.3,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 6h, actual 13h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T14:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T16:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0023",
+      "version": 1,
+      "job_type": "Electrical testing",
+      "unit": "U4",
+      "equipment": "Switchgear",
+      "title": "Test equipment shared with another unit",
+      "issue": "Relay test set was in use on U2, delaying U4 switchgear testing 6 hours.",
+      "impact": "0.25 day delay",
+      "recommendation": "Reserve test equipment per unit in the outage plan.",
+      "category": "resources",
+      "delay_days": 0.25,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2022-U4-spring",
+          "detail": "planned 6h, actual 12h"
+        }
+      ],
+      "outage_id": "2022-U4-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T15:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T17:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0024",
+      "version": 1,
+      "job_type": "Scaffolding erection",
+      "unit": "U2",
+      "equipment": "Boiler house",
+      "title": "High winds stopped external scaffolding",
+      "issue": "Wind above 40 km/h stopped external scaffold erection for 12 hours.",
+      "impact": "0.5 day delay",
+      "recommendation": "Schedule external scaffolding with weather float.",
+      "category": "weather",
+      "delay_days": 0.5,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 12h, actual 24h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T16:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T18:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0025",
+      "version": 1,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U1",
+      "equipment": "HX-101",
+      "title": "Inspector fatigue on extended shifts",
+      "issue": "Inspectors worked 14-hour shifts and data quality issues required re-inspection of 40 tubes.",
+      "impact": "0.5 day delay",
+      "recommendation": "Cap inspection shifts at 12 hours; fatigue policy FP-3 applies.",
+      "category": "resources",
+      "delay_days": 0.5,
+      "sensitivity": "restricted",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2023-U1-fall",
+          "detail": "planned 8h, actual 20h"
+        }
+      ],
+      "outage_id": "2023-U1-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T17:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T19:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0026",
+      "version": 1,
+      "job_type": "Isolation and permits",
+      "unit": "U4",
+      "equipment": "Mechanical isolation",
+      "title": "Mechanical isolation needed extra blind flange",
+      "issue": "An unexpected tie-in needed an extra blind flange, delaying permit issue 7 hours.",
+      "impact": "0.3 day delay",
+      "recommendation": "Walk down isolation boundaries against current P&IDs.",
+      "category": "permits",
+      "delay_days": 0.3,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2022-U4-spring",
+          "detail": "planned 4h, actual 11h"
+        }
+      ],
+      "outage_id": "2022-U4-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T18:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T20:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0027",
+      "version": 1,
+      "job_type": "Tube plugging",
+      "unit": "U2",
+      "equipment": "HX-201",
+      "title": "Not enough tube plugs on site",
+      "issue": "Plug count was based on the plan, not the worst case; extra plugs were couriered.",
+      "impact": "0.3 day delay",
+      "recommendation": "Hold plugs for twice the planned plugging scope.",
+      "category": "parts",
+      "delay_days": 0.3,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2024-U2-spring",
+          "detail": "planned 6h, actual 13h"
+        }
+      ],
+      "outage_id": "2024-U2-spring",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T19:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T21:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0028",
+      "version": 1,
+      "job_type": "Valve overhaul",
+      "unit": "U3",
+      "equipment": "MV-301",
+      "title": "Valve contractor billing dispute",
+      "issue": "Delta Valve Services disputed overtime rates mid-outage; work slowed until resolved.",
+      "impact": "0.5 day delay",
+      "recommendation": "Agree overtime rates in the contract before the outage.",
+      "category": "resources",
+      "delay_days": 0.5,
+      "sensitivity": "restricted",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 12h, actual 24h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T20:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T22:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0029",
+      "version": 1,
+      "job_type": "Hydrotest",
+      "unit": "U3",
+      "equipment": "HX-301",
+      "title": "Hydrotest water not at temperature",
+      "issue": "Hydrotest water was below the minimum temperature; heating took 5 hours.",
+      "impact": "0.2 day delay",
+      "recommendation": "Start heating hydrotest water one shift before the test.",
+      "category": "sequencing",
+      "delay_days": 0.2,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 4h, actual 9h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T21:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-16T23:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0030",
+      "version": 1,
+      "job_type": "Unit restart",
+      "unit": "U3",
+      "equipment": "Unit startup",
+      "title": "Restart checks repeated after late scope change",
+      "issue": "A late scope addition reopened a system; restart checks were repeated.",
+      "impact": "0.3 day delay",
+      "recommendation": "Freeze outage scope 24 hours before restart.",
+      "category": "sequencing",
+      "delay_days": 0.3,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "approved",
+      "source": "seed",
+      "evidence": [
+        {
+          "type": "outage_record",
+          "ref": "2025-U3-fall",
+          "detail": "planned 8h, actual 15h"
+        }
+      ],
+      "outage_id": "2025-U3-fall",
+      "created_by": "lead_01",
+      "created_at": "2026-09-16T22:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-17T00:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0031",
+      "version": 1,
+      "job_type": "Drain and vent",
+      "unit": "U3",
+      "equipment": "HX-301",
+      "title": "Drain and vent crossed midnight and slowed",
+      "issue": "Draining the heat exchanger across midnight took 3 hours longer at shift handover.",
+      "impact": "0.1 day delay",
+      "recommendation": "Plan drain and vent to finish before the shift change.",
+      "category": "sequencing",
+      "delay_days": 0.1,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "draft",
+      "source": "manual",
+      "evidence": [
+        {
+          "type": "planner_note",
+          "ref": "note-L-0031",
+          "detail": ""
+        }
+      ],
+      "outage_id": null,
+      "created_by": "planner_07",
+      "created_at": "2026-11-12T17:33:56.137638+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "expires_at": "2026-12-12T17:33:56.137638+00:00",
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0032",
+      "version": 1,
+      "job_type": "Heat exchanger inspection",
+      "unit": "U4",
+      "equipment": "HX-401",
+      "title": "U4 HX-401 has a different tube pitch from U3",
+      "issue": "U4 HX-401 uses a different tube pitch; probes sized for U3 may not fit.",
+      "impact": "No delay recorded",
+      "recommendation": "Confirm probe size against U4 drawings.",
+      "category": "tooling",
+      "delay_days": 0.0,
+      "sensitivity": "public",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "draft",
+      "source": "manual",
+      "evidence": [
+        {
+          "type": "planner_note",
+          "ref": "note-L-0032",
+          "detail": ""
+        }
+      ],
+      "outage_id": null,
+      "created_by": "planner_07",
+      "created_at": "2026-10-30T17:33:56.137638+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "expires_at": "2026-11-29T17:33:56.137638+00:00",
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0033",
+      "version": 1,
+      "job_type": "Crane lift",
+      "unit": "U4",
+      "equipment": "Turbine hall crane",
+      "title": "Crane inspection due during U4 outage",
+      "issue": "The crane's annual inspection falls in the U4 outage window.",
+      "impact": "0.2 day delay",
+      "recommendation": "Move the crane inspection or book a mobile crane.",
+      "category": "resources",
+      "delay_days": 0.2,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "draft",
+      "source": "manual",
+      "evidence": [
+        {
+          "type": "planner_note",
+          "ref": "note-L-0033",
+          "detail": ""
+        }
+      ],
+      "outage_id": null,
+      "created_by": "planner_07",
+      "created_at": "2026-10-17T17:33:56.137638+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "expires_at": "2026-11-16T17:33:56.137638+00:00",
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": null
+    },
+    {
+      "lesson_id": "L-0034",
+      "version": 1,
+      "job_type": "Valve overhaul",
+      "unit": "U2",
+      "equipment": "MV-201",
+      "title": "[forgotten]",
+      "issue": "[content removed under retention policy]",
+      "impact": "",
+      "recommendation": "",
+      "category": "parts",
+      "delay_days": 0,
+      "sensitivity": "internal",
+      "allowed_roles": [
+        "planner",
+        "contractor",
+        "lead"
+      ],
+      "status": "forgotten",
+      "source": "seed",
+      "evidence": [],
+      "outage_id": null,
+      "created_by": "planner_07",
+      "created_at": "2026-09-10T17:33:56.137638+00:00",
+      "approved_by": "lead_01",
+      "approved_at": "2026-09-10T17:33:56.137638+00:00",
+      "expires_at": null,
+      "supersedes": null,
+      "superseded_by": null,
+      "change_reason": "Duplicate of L-0009 and named an individual; forgotten under retention policy."
+    }
+  ],
+  "audit_log": [
+    {
+      "ts": "2026-09-15T19:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0001",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-15T20:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0002",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-15T21:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0003",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-15T22:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0004",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-15T23:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0005",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T00:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0006",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-15T23:33:56.137638+00:00",
+      "user_id": "planner_07",
+      "role": "planner",
+      "action": "add",
+      "lesson_id": "L-0007",
+      "version": 1,
+      "allowed": true,
+      "detail": "lesson added from shift log"
+    },
+    {
+      "ts": "2026-09-16T01:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0007",
+      "version": 1,
+      "allowed": true,
+      "detail": ""
+    },
+    {
+      "ts": "2026-09-25T23:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "correct",
+      "lesson_id": "L-0007",
+      "version": 2,
+      "allowed": true,
+      "detail": "Outage completion report confirmed 2.5 days total delay including probe calibration."
+    },
+    {
+      "ts": "2026-09-16T02:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0008",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T03:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0009",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T04:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0010",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T05:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0011",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T06:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0012",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T07:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0013",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T08:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0014",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T09:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0015",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T10:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0016",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T11:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0017",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T12:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0018",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T13:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0019",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T14:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0020",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T15:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0021",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T16:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0022",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T17:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0023",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T18:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0024",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T19:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0025",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T20:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0026",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T21:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0027",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T22:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0028",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-16T23:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0029",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-09-17T00:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "approve",
+      "lesson_id": "L-0030",
+      "version": 1,
+      "allowed": true,
+      "detail": "seed"
+    },
+    {
+      "ts": "2026-11-12T17:33:56.137638+00:00",
+      "user_id": "planner_07",
+      "role": "planner",
+      "action": "add",
+      "lesson_id": "L-0031",
+      "version": 1,
+      "allowed": true,
+      "detail": "saved as draft"
+    },
+    {
+      "ts": "2026-10-30T17:33:56.137638+00:00",
+      "user_id": "planner_07",
+      "role": "planner",
+      "action": "add",
+      "lesson_id": "L-0032",
+      "version": 1,
+      "allowed": true,
+      "detail": "saved as draft"
+    },
+    {
+      "ts": "2026-10-17T17:33:56.137638+00:00",
+      "user_id": "planner_07",
+      "role": "planner",
+      "action": "add",
+      "lesson_id": "L-0033",
+      "version": 1,
+      "allowed": true,
+      "detail": "saved as draft"
+    },
+    {
+      "ts": "2026-11-11T17:33:56.137638+00:00",
+      "user_id": "lead_01",
+      "role": "lead",
+      "action": "forget",
+      "lesson_id": "L-0034",
+      "version": 1,
+      "allowed": true,
+      "detail": "Duplicate of L-0009 and named an individual; forgotten under retention policy."
+    },
+    {
+      "ts": "2026-11-12T17:33:56.137638+00:00",
+      "user_id": "contractor_02",
+      "role": "contractor",
+      "action": "retrieve_denied",
+      "lesson_id": "L-0012",
+      "version": 1,
+      "allowed": false,
+      "detail": "restricted lesson hidden by policy"
+    },
+    {
+      "ts": "2026-11-12T17:33:56.137638+00:00",
+      "user_id": "contractor_02",
+      "role": "contractor",
+      "action": "add",
+      "lesson_id": null,
+      "version": null,
+      "allowed": false,
+      "detail": "contractor role is read only"
+    },
+    {
+      "ts": "2026-11-13T17:33:56.137638+00:00",
+      "user_id": "planner_07",
+      "role": "planner",
+      "action": "approve",
+      "lesson_id": "L-0031",
+      "version": 1,
+      "allowed": false,
+      "detail": "only lead can approve"
+    }
+  ]
+}
