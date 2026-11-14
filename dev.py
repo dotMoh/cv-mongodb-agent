@@ -27,7 +27,7 @@ def load_env(path):
 
 def test():
     code = subprocess.call([PY, "-m", "pytest", "-rs"], cwd=ROOT)
-    if (ROOT / "agent" / "demo.py").exists():
+    if (ROOT / "agent" / "demo.py").exists() and (ROOT / "data" / "samples" / "u4_outage_24h.csv").exists():
         print("--- demo smoke run (agent.demo, mock mode) ---")
         demo = subprocess.call([PY, "-m", "agent.demo"], cwd=ROOT, env=dict(os.environ, **MOCK),
                                stdout=subprocess.DEVNULL)

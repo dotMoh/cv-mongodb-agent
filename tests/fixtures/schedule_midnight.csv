@@ -1,0 +1,6 @@
+Activity ID,Activity,Begin,Finish,Unit,Contractor,Predecessors
+A1,Isolate U4 heat exchanger,2027-04-12 06:00,2027-04-12 10:00,U4,Ops,
+A2,U4 heat exchanger tube inspection,2027-04-12 10:00,2027-04-12 18:00,U4,Acme NDT,A1
+A3,Night shift tube plugging,2027-04-12 22:00,2027-04-13 04:00,U4,Acme NDT,A2
+A4,Return to service checks,2027-04-13 04:00,2027-04-13 08:00,U4,Ops,A3
+A5,Paint handrails,2027-04-12 08:00,,U4,Painters,

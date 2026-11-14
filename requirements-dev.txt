@@ -1,5 +1,7 @@
-# Test-only deps. The suite runs in mock mode: no Atlas, no Ollama, no torch needed.
-fastapi>=0.110
-httpx>=0.27
-pymongo>=4.10
+# Test-only deps. Mock mode: no Atlas, no Ollama, no torch.
 pytest>=8
+pandas>=2.2
+openpyxl>=3.1
+pymongo>=4.10
+streamlit>=1.38
+plotly>=5.22
