@@ -47,4 +47,7 @@ EMBEDDINGS = os.getenv("EMBEDDINGS", "auto").lower()            # auto | minilm 
 EMBED_DIMS = 384
 
 DRAFT_EXPIRY_DAYS = int(os.getenv("DRAFT_EXPIRY_DAYS", "30"))
+# Forgotten tombstones get purge_at = now + this many minutes; Atlas TTL index ttl_purge_at then deletes them
+# (demo: minutes; in production this would be days). The audit_log keeps the record.
+FORGET_PURGE_MINUTES = float(os.getenv("FORGET_PURGE_MINUTES", "5"))
 FORGET_POLICY = os.getenv("FORGET_POLICY", "tombstone").lower() # tombstone | redact

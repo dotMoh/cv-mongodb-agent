@@ -290,11 +290,14 @@ def forget(user_id: str, lesson_id: str, confirm: bool = False, reason: str = ""
     cur = _latest(lesson_id)
     if not cur:
         raise KeyError(lesson_id)
-    fields = {"status": "forgotten", "forgotten_by": user_id, "forgotten_at": now, "change_reason": reason or None}
+    purge_at = now + timedelta(minutes=config.FORGET_PURGE_MINUTES)  # Atlas TTL (ttl_purge_at) deletes it then
+    fields = {"status": "forgotten", "forgotten_by": user_id, "forgotten_at": now, "change_reason": reason or None,
+              "purge_at": purge_at}
     if config.FORGET_POLICY == "redact":
         fields.update({"issue": "[redacted]", "recommendation": "[redacted]", "evidence": []})
     get_store().lessons_update(cur["_id"], fields)
-    audit(user_id, "forget", lesson_id=lesson_id, version=cur["version"], detail=reason or config.FORGET_POLICY, now=now)
+    audit(user_id, "forget", lesson_id=lesson_id, version=cur["version"], detail=f"{reason or config.FORGET_POLICY}; Atlas TTL purges it at "
+                 f"{(purge_at if purge_at.tzinfo else purge_at.replace(tzinfo=timezone.utc)).astimezone():%H:%M}", now=now)
 
 
 def expire_drafts(now=None) -> int:
