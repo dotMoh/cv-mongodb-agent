@@ -72,7 +72,7 @@ def _fallback(question, tasks, report, recommendations):
 def ask(user_id: str, question: str, tasks: list[dict], report: dict, recommendations: list[dict] | None = None) -> dict:
     ctx = _context(tasks, report, recommendations)
     text = llm.chat(SYSTEM, f"Context (JSON):\n{ctx}\n\nQuestion: {question}")
-    source = "ollama"
+    source = llm.provider()
     if not text:
         text, source = _fallback(question, tasks, report, recommendations), "fallback"
     return {"answer": text, "lessons_cited": _cited(report, text), "source": source}

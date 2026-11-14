@@ -6,3 +6,5 @@ pymongo>=4.10
 sentence-transformers>=2.7   # real semantic matching (MiniLM); without it a lexical fallback is used
 streamlit>=1.35
 plotly>=5.20
+# optional: Claude API for chat (LLM_PROVIDER=anthropic, ANTHROPIC_API_KEY in .env)
+anthropic>=1.0
