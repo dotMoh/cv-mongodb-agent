@@ -40,6 +40,8 @@ def create_indexes(dbh, wait=True):
     lessons = dbh.lessons
     lessons.create_index([("lesson_id", ASCENDING), ("version", DESCENDING)], unique=True, name="lesson_version")
     lessons.create_index([("status", ASCENDING), ("expires_at", ASCENDING)], name="status_expiry")
+    # $graphLookup connects links.lesson_id -> lesson_id (served by lesson_version); this one helps reverse lookups.
+    lessons.create_index([("links.lesson_id", ASCENDING)], name="links_lesson_id")
     # Forgotten docs can carry purge_at; Atlas deletes them then. Drafts are NOT TTL'd (expiry is audited).
     lessons.create_index([("purge_at", ASCENDING)], expireAfterSeconds=0, name="ttl_purge_at")
     dbh.audit_log.create_index([("ts", DESCENDING)], name="ts_desc")
@@ -48,10 +50,18 @@ def create_indexes(dbh, wait=True):
     dbh.outage_actuals.create_index([("outage_id", ASCENDING), ("task_id", ASCENDING)], name="outage_task")
     print("Created standard indexes on lessons, audit_log, schedules, outage_actuals.")
 
-    existing = {ix["name"] for ix in lessons.list_search_indexes()}
+    existing = {ix["name"]: ix for ix in lessons.list_search_indexes()}
     if LESSON_INDEX in existing:
-        lessons.update_search_index(LESSON_INDEX, LESSON_INDEX_DEF)
-        print(f"Updated vector index '{LESSON_INDEX}'.")
+        current = existing[LESSON_INDEX].get("latestDefinition", {}).get("fields", [])
+        if sorted(map(str, current)) == sorted(map(str, LESSON_INDEX_DEF["fields"])):
+            print(f"Vector index '{LESSON_INDEX}' already up to date.")
+        else:
+            # update_search_index can't change a vectorSearch index on every server; drop and recreate.
+            lessons.drop_search_index(LESSON_INDEX)
+            while any(ix["name"] == LESSON_INDEX for ix in lessons.list_search_indexes()):
+                time.sleep(2)
+            lessons.create_search_index(SearchIndexModel(definition=LESSON_INDEX_DEF, name=LESSON_INDEX, type="vectorSearch"))
+            print(f"Recreated vector index '{LESSON_INDEX}'.")
     else:
         lessons.create_search_index(SearchIndexModel(definition=LESSON_INDEX_DEF, name=LESSON_INDEX, type="vectorSearch"))
         print(f"Requested vector index '{LESSON_INDEX}'.")

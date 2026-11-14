@@ -18,6 +18,8 @@ python make_samples.py           # regenerates samples/
 - 3 drafts (L-0031 to L-0033) expiring in 28, 15 and 2 days. 1 forgotten tombstone (L-0034, content removed, no embedding).
 - 39 audit entries including 3 denied ones (red rows from the start).
 
+**Lesson graph:** every lesson version has `links: [{lesson_id, type, note}]`, type `caused_by` | `led_to` | `same_root_cause`, stored on both ends (14 edges, 21 docs). Demo chain in 2025-U3-fall: L-0006 permits → L-0005 scaffold → **L-0007** tooling → L-0010 closure across midnight → L-0029 hydrotest; L-0007 shares a root cause with L-0002, L-0003 and restricted L-0012. Index `links_lesson_id`. Tested on local Atlas with `$vectorSearch` then `$graphLookup` (`connectFromField: "links.lesson_id"`, `connectToField: "lesson_id"`, `restrictSearchWithMatch` = policy): planner gets the chain with L-0012 hidden, lead sees all, contractor's chain is empty because every linked lesson is internal or restricted.
+
 **Indexes:** vector `lesson_vector_index` (384, cosine; filters `status`, `sensitivity`, `allowed_roles`, `unit`, `job_type`); unique `{lesson_id, version}`; `{status, expires_at}`; TTL only on `purge_at` (never on drafts); `audit_log {ts: -1}`; unique `schedules {schedule_id, version}`; `outage_actuals {outage_id, task_id}`.
 
 **Score note:** Atlas `vectorSearchScore` for cosine is `(1 + cosine) / 2`, so 0.55 cosine is about 0.775 score. Convert with `cosine = 2 * score - 1` before applying the 0.55 threshold.

@@ -171,6 +171,37 @@ def _impact(delay_days: float) -> str:
     return f"{delay_days:g} day delay" if delay_days else "No delay recorded"
 
 
+# Lesson graph for $graphLookup. (from, type, to, note); stored on both ends with the
+# inverse type (led_to <-> caused_by, same_root_cause both ways).
+LINKS = [
+    ("L-0005", "led_to", "L-0007", "Scaffold overrun compressed the window to stage inspection tooling"),
+    ("L-0007", "led_to", "L-0010", "Inspection slip pushed channel head closure across the midnight handover"),
+    ("L-0010", "led_to", "L-0029", "Late closure moved hydrotest before the water was heated"),
+    ("L-0007", "same_root_cause", "L-0002", "Inspection tooling not verified before the work window"),
+    ("L-0007", "same_root_cause", "L-0003", "Inspection tooling not verified before the work window"),
+    ("L-0007", "same_root_cause", "L-0012", "Inspection contractor readiness not confirmed before outage"),
+    ("L-0006", "led_to", "L-0005", "Late permits delayed scaffold start into the drain and vent window"),
+    ("L-0027", "led_to", "L-0011", "Plug shortage forced rushed plugging and a leaking plug"),
+    ("L-0004", "led_to", "L-0027", "Plugging scope underestimated, so plug stock ran short"),
+    ("L-0008", "same_root_cause", "L-0023", "Shared equipment not booked across units"),
+    ("L-0009", "same_root_cause", "L-0018", "Critical spares not physically verified before outage"),
+    ("L-0017", "same_root_cause", "L-0018", "Critical spares not physically verified before outage"),
+    ("L-0021", "same_root_cause", "L-0025", "Shift rostering of qualified staff"),
+    ("L-0013", "same_root_cause", "L-0026", "Isolation boundaries not verified against current drawings"),
+]
+INVERSE = {"led_to": "caused_by", "caused_by": "led_to", "same_root_cause": "same_root_cause"}
+
+
+def links_for(lesson_id: str) -> list[dict]:
+    out = []
+    for a, t, b, note in LINKS:
+        if a == lesson_id:
+            out.append({"lesson_id": b, "type": t, "note": note})
+        elif b == lesson_id:
+            out.append({"lesson_id": a, "type": INVERSE[t], "note": note})
+    return out
+
+
 def build_seed(now: datetime | None = None) -> dict:
     """Return {"lessons": [...], "audit_log": [...]} without embeddings or _ids.
     Version links (supersedes/superseded_by) are filled in by seed_governed.py after insert,
@@ -234,6 +265,8 @@ def build_seed(now: datetime | None = None) -> dict:
         _audit(now - timedelta(days=2), "contractor_02", "add", None, None, False, "contractor role is read only"),
         _audit(now - timedelta(days=1), "planner_07", "approve", "L-0031", 1, False, "only lead can approve"),
     ]
+    for d in lessons:
+        d["links"] = links_for(d["lesson_id"]) if d["status"] != "forgotten" else []
     return {"lessons": lessons, "audit_log": audit}
 
 
