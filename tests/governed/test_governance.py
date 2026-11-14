@@ -48,24 +48,20 @@ def test_contractor_denied_action_changes_nothing():
     assert target["lesson_id"] in retrieved_ids(LEAD, query_for(target))
 
 
-def test_contractor_sees_only_public_and_hidden_count():
-    seen = governance.visible_lessons(CONTRACTOR)
-    assert all(l["sensitivity"] == "public" for l in seen["lessons"])
-    assert all("contractor" in l.get("allowed_roles", ["contractor"]) for l in seen["lessons"])
-    total = len(governance.visible_lessons(LEAD)["lessons"])
-    assert seen["hidden_count"] == total - len(seen["lessons"]), "hidden_count drives 'N restricted lessons hidden by policy'"
+def test_all_roles_read_the_same_approved_lessons():
+    """Policy (14:15): every role reads every approved lesson; roles only differ in what they may change."""
+    ids = {u: {l["lesson_id"] for l in governance.visible_lessons(u)["lessons"] if l["status"] == "approved"}
+           for u in (LEAD, PLANNER, CONTRACTOR)}
+    assert ids[CONTRACTOR] == ids[PLANNER] == ids[LEAD]
+    for u in (PLANNER, CONTRACTOR):
+        assert governance.visible_lessons(u)["hidden_count"] == 0
 
 
-def test_contractor_restricted_retrieval_is_logged_as_denied():
+def test_contractor_retrieves_restricted_lessons_too():
     restricted = any_approved(sensitivity="restricted")
     res = governance.retrieve(CONTRACTOR, query_for(restricted), k=50)
-    assert restricted["lesson_id"] not in {l["lesson_id"] for l in res["lessons"]}
-    assert audit_latest(governance, user_id=CONTRACTOR, action="retrieve_denied", allowed=False)
-
-
-def test_planner_never_sees_restricted():
-    for l in governance.visible_lessons(PLANNER)["lessons"]:
-        assert l["sensitivity"] in ("public", "internal")
+    assert restricted["lesson_id"] in {l["lesson_id"] for l in res["lessons"]}
+    assert res["hidden_count"] == 0
 
 
 # ---------------------------------------------------------------- planner: drafts with 30-day expiry
@@ -178,7 +174,7 @@ def require_shared_seed():
 def test_seed_counts_for_contractor():
     require_shared_seed()
     seen = governance.visible_lessons(CONTRACTOR)
-    assert len(seen["lessons"]) == 18 and seen["hidden_count"] == 12
+    assert len(seen["lessons"]) == 30 and seen["hidden_count"] == 0
 
 
 def test_seed_forgotten_and_drafts_not_retrieved():

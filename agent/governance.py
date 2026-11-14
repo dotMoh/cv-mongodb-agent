@@ -9,6 +9,9 @@ from .store import get_store
 USERS = {"planner_07": "planner", "contractor_02": "contractor", "lead_01": "lead"}
 
 # Which sensitivities each role may read, and which actions it may take.
+# config.OPEN_READS (default on, env OPEN_READS=0 to flip back): every role reads every approved lesson,
+# so READ_POLICY / allowed_roles only apply when it is off. ACTIONS always apply (contractor read-only,
+# planner adds drafts, lead does everything); denied attempts are always logged.
 READ_POLICY = {
     "planner": {"public", "internal"},
     "contractor": {"public"},
@@ -68,12 +71,16 @@ def _require(user_id: str, permission: str, action: str, lesson_id=None, version
 
 
 def can_read(role: str, lesson: dict) -> bool:
+    if config.OPEN_READS:
+        return True
     return lesson.get("sensitivity", "internal") in READ_POLICY.get(role, set()) and \
         role in (lesson.get("allowed_roles") or ["planner", "contractor", "lead"])
 
 
 def policy_filter(role: str) -> dict:
     """Mongo-style filter for approved lessons this role may read (used by vector search)."""
+    if config.OPEN_READS:
+        return {"status": "approved"}
     return {"status": "approved", "sensitivity": {"$in": sorted(READ_POLICY[role])}, "allowed_roles": role}
 
 

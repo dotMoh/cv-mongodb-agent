@@ -49,7 +49,7 @@ def jcall(base, path, body=None, raw=None):
 
 
 def check_analysis(a):
-    for key in ("token", "summary", "ambiguities", "overall", "risks", "hidden", "heat"):
+    for key in ("token", "summary", "ambiguities", "overall", "risks", "heat"):
         assert key in a, f"missing {key}"
     assert a["summary"]["tasks"] > 0
     assert 0 <= a["overall"]["risk_pct"] <= 100
@@ -78,13 +78,13 @@ def test_sample_planner(base):
     assert a["summary"]["crosses_midnight"] >= 1
 
 
-def test_contractor_sees_less(base):
+def test_contractor_sees_same_risk_as_planner(base):
     _, planner = jcall(base, "/api/sample?user=planner_07")
     code, contractor = jcall(base, "/api/sample?user=contractor_02")
     assert code == 200, contractor
     check_analysis(contractor)
-    assert contractor["hidden"] >= planner["hidden"]
-    assert contractor["hidden"] > 0, "contractor should have restricted lessons hidden"
+    assert contractor.get("hidden", 0) == 0
+    assert contractor["overall"]["risk_pct"] == planner["overall"]["risk_pct"]
 
 
 def test_upload_csv_and_reassess(base):
