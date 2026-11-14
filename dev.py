@@ -1,6 +1,6 @@
 """Cross-platform runner (Windows PowerShell, macOS, Linux).
 
-  python dev.py          Streamlit app (streamlit run frontend/app.py) on mock data: no Atlas, no Ollama
+  python dev.py          web app (python frontend/server.py) on mock data: no Atlas, no Ollama
   python dev.py live     same app, loads .env (Atlas + Ollama)
   python dev.py test     test suite, then the demo script in mock mode
 Ctrl-C stops it.
@@ -36,20 +36,23 @@ def test():
     return code
 
 
-def streamlit(mode):
+def serve(mode):
     if mode == "live":
         env_file = ROOT / ".env"
         if not env_file.exists():
             sys.exit("No .env. Copy .env.example to .env and fill in MONGODB_URI.")
         load_env(env_file)
     else:
-        os.environ.update({k: os.environ.get(k, v) if k != "DATA_SOURCE" else v for k, v in MOCK.items()})
-    app = ROOT / "frontend" / "app.py"
-    if not app.exists():
-        sys.exit("No frontend/app.py yet (the Streamlit app). Pull the latest main.")
-    print(f"Streamlit on http://localhost:8501  (DATA_SOURCE={os.environ.get('DATA_SOURCE')}, LLM_MODE={os.environ.get('LLM_MODE', 'auto')})")
+        os.environ["DATA_SOURCE"] = "mock"
+        for k, v in MOCK.items():
+            os.environ.setdefault(k, v)
+    server = ROOT / "frontend" / "server.py"
+    if not server.exists():
+        sys.exit("No frontend/server.py yet. Pull the latest main.")
+    port = os.environ.setdefault("PORT", "8000")
+    print(f"Open http://localhost:{port}  (DATA_SOURCE={os.environ.get('DATA_SOURCE')}, LLM_MODE={os.environ.get('LLM_MODE', 'auto')})")
     try:
-        return subprocess.call([PY, "-m", "streamlit", "run", str(app), "--server.port", "8501"], cwd=ROOT)
+        return subprocess.call([PY, str(server)], cwd=ROOT)
     except KeyboardInterrupt:
         return 0
 
@@ -59,5 +62,5 @@ if __name__ == "__main__":
     if mode == "test":
         sys.exit(test())
     if mode in ("mock", "live"):
-        sys.exit(streamlit(mode))
+        sys.exit(serve(mode))
     sys.exit(__doc__)
