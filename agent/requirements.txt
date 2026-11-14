@@ -1,0 +1,7 @@
+pandas>=2.0
+openpyxl>=3.1
+pymongo>=4.10
+# optional
+sentence-transformers>=2.7   # real semantic matching (MiniLM); without it a lexical fallback is used
+streamlit>=1.35
+plotly>=5.20

@@ -1,0 +1,59 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend (mock data)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "main:app",
+        "--reload",
+        "--port",
+        "8000"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "DATA_SOURCE": "mock",
+        "LLM_MODE": "auto",
+        "EMBEDDINGS": "hash"
+      }
+    },
+    {
+      "name": "Backend (fallback planner, no Ollama)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "main:app",
+        "--reload",
+        "--port",
+        "8000"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "DATA_SOURCE": "mock",
+        "LLM_MODE": "fallback",
+        "EMBEDDINGS": "hash"
+      }
+    },
+    {
+      "name": "Backend (Atlas)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "main:app",
+        "--reload",
+        "--port",
+        "8000"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "DATA_SOURCE": "mongo",
+        "MONGODB_URI": "PASTE_ATLAS_URI_HERE",
+        "EMBEDDINGS": "minilm"
+      }
+    }
+  ]
+}
