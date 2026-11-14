@@ -93,10 +93,50 @@ def _read(file, filename):
     ext = Path(filename or "upload.csv").suffix.lower()
     if ext in (".xlsx", ".xlsm", ".xls"):
         return pd.read_excel(io.BytesIO(data), dtype=object)
-    if ext == ".pdf":
-        raise ValueError("PDF schedules are not supported yet; export the Gantt to CSV or Excel")
+    if ext == ".pdf" or data[:5] == b"%PDF-":
+        return _read_pdf(data)
     text = data.decode("utf-8-sig", errors="replace")
     return pd.read_csv(io.StringIO(text), dtype=str, sep=None, engine="python", keep_default_na=False)
+
+
+def _read_pdf(data: bytes):
+    """Tables from a text-based PDF (schedule export or worksheet). Scanned images are not supported."""
+    import pandas as pd
+    try:
+        import pdfplumber
+    except ImportError as e:
+        raise ValueError("PDF support needs 'pip install pdfplumber'") from e
+
+    def clean(cell):
+        return re.sub(r"\s+", " ", str(cell)).strip() if cell is not None else ""
+
+    header, rows, any_text = None, [], False
+    text_mode = {"vertical_strategy": "text", "horizontal_strategy": "text", "text_keep_blank_chars": True, "text_x_tolerance": 2}
+    with pdfplumber.open(io.BytesIO(data)) as pdf:
+        for page in pdf.pages:
+            any_text = any_text or bool((page.extract_text() or "").strip())
+            # Ruled tables first; fall back to whitespace-aligned columns (common in Gantt exports).
+            tables = page.extract_tables() or page.extract_tables(table_settings=text_mode)
+            for table in tables:
+                table = [[clean(c) for c in r] for r in table if any(clean(c) for c in r)]
+                if not table:
+                    continue
+                first = table[0]
+                looks_header = sum(1 for v in map_columns(first).values() if v) >= 2
+                if header is None:
+                    if not looks_header:
+                        continue
+                    header, table = first, table[1:]
+                elif first == header:
+                    table = table[1:]
+                width = len(header)
+                rows += [(r + [""] * width)[:width] for r in table]
+    if header is None:
+        if not any_text:
+            raise ValueError("This PDF looks scanned (no text layer). Export the schedule to Excel/CSV, or use a text PDF.")
+        raise ValueError("No schedule table found in the PDF. Export the Gantt as a table (Excel/CSV/PDF table).")
+    header = [h or f"Column {i + 1}" for i, h in enumerate(header)]
+    return pd.DataFrame(rows, columns=header, dtype=str)
 
 
 def _blank(v) -> bool:
