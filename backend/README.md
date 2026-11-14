@@ -13,6 +13,8 @@ uvicorn main:app --reload --port 8000
 Open http://localhost:8000/docs to try the endpoints. CORS is open (`*`), so the frontend on :5500 can call it.
 
 ## Settings (env vars)
+Put these in a `.env` file in `backend/` or the repo root (`KEY=value` per line); `config.py` loads it on Windows too. Real environment variables win.
+
 | Var | Default | Meaning |
 |---|---|---|
 | `DATA_SOURCE` | `mock` | `mongo` switches to Atlas (Person A's data) |
@@ -38,7 +40,7 @@ Roles are normalized: "Safety Officer" -> `safety_officer`.
 
 ## Demo (verified on mock)
 1. `/plan` "Plan July maintenance outage for Unit 3" (Planner, unit-3): start moves from July 5 to **June 14, 2027**, maintenance gets +3 buffer days, citing `mock-july-overheat`.
-2. `/learn` "Intake chiller retrofit done in 2025: July intake temps now safe for full outage", `corrects_id: "mock-july-overheat"`.
+2. `/learn` "Unit 3 July maintenance outage update: intake chiller retrofit finished in 2025, so July cooling water temperatures and heat waves no longer delay Unit 3 outages.", `corrects_id: "mock-july-overheat"`.
 3. `/plan` again: start is back to **July 5**, the old memory is corrected, the chiller lesson is top memory.
 Rerun with `POST /reset`. If Ollama is slow on stage, start with `LLM_MODE=fallback`; the rule planner gives the same demo beat deterministically.
 
