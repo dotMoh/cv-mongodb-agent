@@ -1,2 +1,4 @@
 pymongo>=4.10
 sentence-transformers>=3.0
+pandas>=2.0
+openpyxl>=3.1
