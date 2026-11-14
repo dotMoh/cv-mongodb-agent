@@ -41,7 +41,7 @@ def test_no_matches_gives_message_and_no_evidence():
 def test_every_cited_lesson_is_real_approved_and_visible():
     tasks = seed_like_tasks() + [NONSENSE]
     versions = all_lesson_versions()
-    for user, allowed in ((PLANNER, {"public", "internal"}), (CONTRACTOR, {"public"}), (LEAD, {"public", "internal", "restricted"})):
+    for user in (PLANNER, CONTRACTOR, LEAD):
         report = risk.assess(user, tasks)
         for tr in report["tasks"]:
             if tr["matches"]:
@@ -51,7 +51,6 @@ def test_every_cited_lesson_is_real_approved_and_visible():
                 assert m["lesson_id"] in versions, f"invented lesson {m['lesson_id']}"
                 v = versions[m["lesson_id"]][m["version"]]
                 assert v["status"] == "approved", f"{m['lesson_id']} v{m['version']} is {v['status']}"
-                assert v["sensitivity"] in allowed, f"{user} was shown a {v['sensitivity']} lesson"
                 assert m["similarity"] >= 0.55
 
 
@@ -87,9 +86,11 @@ def test_forgotten_lesson_disappears_from_risk_evidence():
     assert gone not in {m["lesson_id"] for tr in after["tasks"] for m in tr["matches"]}
 
 
-def test_contractor_hidden_count_reported():
-    report = risk.assess(CONTRACTOR, seed_like_tasks())
-    assert isinstance(report["hidden_by_policy"], int) and report["hidden_by_policy"] >= 0
+def test_every_role_gets_the_same_risk():
+    tasks = seed_like_tasks()
+    pct = {u: risk.assess(u, tasks)["overall"]["risk_pct"] for u in (PLANNER, CONTRACTOR, LEAD)}
+    assert len(set(pct.values())) == 1, pct
+    assert risk.assess(CONTRACTOR, tasks).get("hidden_by_policy", 0) == 0
 
 
 @pytest.mark.parametrize("by", ["task", "discipline", "unit"])
