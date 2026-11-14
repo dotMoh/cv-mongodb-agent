@@ -17,6 +17,16 @@ READ_POLICY = {
     "contractor": {"public"},
     "lead": {"public", "internal", "restricted"},
 }
+# Field redaction (config.REDACTION): everyone reads every approved lesson, but these fields come back as
+# "[restricted]" for these roles on lessons of these sensitivities. Title, unit, delay and recommendation
+# stay visible, so risk scores do not change. Applied in the Atlas pipeline ($set after $vectorSearch /
+# $graphLookup), so redacted text never reaches the LLM or the page.
+REDACT_FIELDS = ["evidence", "change_reason", "outage_id", "links.note"]
+REDACT_POLICY = {
+    "contractor": {"internal", "restricted"},
+    "planner": {"restricted"},
+    "lead": set(),
+}
 ACTIONS = {
     "planner": {"read", "add", "upload_schedule", "decide_recommendation", "generate_lessons"},
     "contractor": {"read"},
@@ -79,6 +89,17 @@ def can_read(role: str, lesson: dict) -> bool:
         role in (lesson.get("allowed_roles") or ["planner", "contractor", "lead"])
 
 
+def redaction(role: str):
+    """Redaction spec for the store, or None when this role sees everything."""
+    sens = REDACT_POLICY.get(role, set()) if config.REDACTION else set()
+    return {"fields": REDACT_FIELDS, "sensitivities": sorted(sens)} if sens else None
+
+
+def redact_doc(role: str, doc: dict) -> dict:
+    from .store import _redact
+    return _redact(dict(doc), redaction(role))
+
+
 def policy_filter(role: str) -> dict:
     """Mongo-style filter for approved lessons this role may read (used by vector search)."""
     if config.OPEN_READS:
@@ -117,6 +138,7 @@ def visible_lessons(user_id: str, include_drafts: bool = False, include_supersed
                     and _visible_drafts(user_id, role, d) and (role == "lead" or can_read(role, d))]
     if include_superseded:
         visible += [d for d in store.lessons_find({"status": "superseded"}) if can_read(role, d)]
+    visible = [redact_doc(role, d) for d in visible]
     visible.sort(key=lambda d: (d["lesson_id"], d["version"]))
     if hidden:
         audit(user_id, "retrieve_denied", allowed=False, detail=f"{hidden} restricted lessons hidden by policy")
@@ -134,7 +156,7 @@ def retrieve(user_id: str, query: str, k: int = 5, unit: str | None = None, min_
     flt = policy_filter(role)
     if unit:
         flt["unit"] = unit
-    hits = [dict(d, similarity=s) for d, s in store.lessons_search(query, k, flt) if s >= thr]
+    hits = [dict(d, similarity=s) for d, s in store.lessons_search(query, k, flt, redaction(role)) if s >= thr]
     # What would have matched without the role policy (to report hidden lessons honestly).
     all_flt = {"status": "approved", **({"unit": unit} if unit else {})}
     hidden = [] if config.OPEN_READS else \
@@ -156,7 +178,8 @@ def lesson_chain(user_id: str, seed_ids=None, query: str | None = None, k: int =
     role = role_of(user_id)
     flt = policy_filter(role)
     try:
-        seeds = get_store().lessons_graph(flt, max(0, max_hops - 1), seed_ids=seed_ids, text=query, k=k)
+        seeds = get_store().lessons_graph(flt, max(0, max_hops - 1), seed_ids=seed_ids, text=query, k=k,
+                                          redact=redaction(role))
     except Exception:  # graph is an extra; never break the answer
         return []
     for s in seeds:
@@ -182,7 +205,7 @@ def history(user_id: str, lesson_id: str) -> list[dict]:
     if role != "lead" and not can_read(role, versions[-1]):
         audit(user_id, "history", allowed=False, lesson_id=lesson_id, detail="lesson hidden by policy")
         raise PermissionDenied("lesson hidden by policy")
-    return versions
+    return [redact_doc(role, d) for d in versions]
 
 
 # ------------------------------------------------------------------ writes

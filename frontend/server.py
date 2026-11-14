@@ -176,6 +176,7 @@ def analysis(token, user_id, memory=True):
         overall["note"] = "Memory off: retrieval disabled, no past lessons were consulted, so nothing can be flagged."
     return {"token": token, "file": s["file"], "summary": s["summary"], "ambiguities": s["ambiguities"],
             "memory": memory, "overall": overall, "risks": _top(rep), "hidden": rep.get("hidden_by_policy", 0),
+            "redacted": len(rep.get("redacted_lessons") or []),
             "compare": compare, "heat": heat_points(user_id, s["tasks"], rep, memory),
             "units": unit_risk(s["tasks"], rep)}
 

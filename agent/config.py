@@ -36,6 +36,8 @@ LLM_MODE = os.getenv("LLM_MODE", "auto").lower()                # auto | ollama 
 OPEN_READS = os.getenv("OPEN_READS", "1").strip().lower() not in ("0", "false", "no")
 # 0 (default) = audit log keeps writes and blocked attempts only; 1 = also log every lesson read
 LOG_READS = os.getenv("LOG_READS", "0").strip().lower() in ("1", "true", "yes")
+# 1 (default) = field redaction: sensitive fields shown as "[restricted]" per role (see governance.REDACT_POLICY)
+REDACTION = os.getenv("REDACTION", "1").strip().lower() not in ("0", "false", "no")
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama").lower()       # ollama | anthropic (key: ANTHROPIC_API_KEY in .env)
 ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-fable-5-2")
 ANTHROPIC_EFFORT = os.getenv("ANTHROPIC_EFFORT", "low")

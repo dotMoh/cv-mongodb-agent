@@ -163,7 +163,8 @@ function render(d) {
       <div>${esc(r.mitigation)}</div>
     </div>`).join("") :
     `<div class="risk">${d.memory ? "No sufficiently similar historical outage lessons found." : "Memory is off, so no past lessons were consulted and nothing is flagged. Turn memory on to compare."}</div>`;
-  $("hidden").textContent = d.hidden ? `${d.hidden} restricted lessons hidden for this role.` : "";
+  $("hidden").textContent = (d.hidden ? `${d.hidden} restricted lessons hidden for this role. ` : "") +
+    (d.redacted ? `${d.redacted} lessons used with evidence and notes shown as [restricted] for this role (field redaction).` : "");
   setHeat(d.heat, d.units);
 }
 function fail(e) { $("status").innerHTML = `<span class="error">${esc(e.message)}</span>`; }
