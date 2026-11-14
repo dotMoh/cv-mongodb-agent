@@ -157,3 +157,14 @@ def test_demo_xlsx_day_and_time_columns_and_ambiguous_row():
     assert any(x["critical"] for x in res["tasks"]), "critical path computed when the file has no Critical column"
     timed = [x for x in res["tasks"] if x["end"] is not None]
     assert all(x["end"] > x["start"] for x in timed)
+
+
+def test_demo_pdf_parses():
+    path = ROOT / "agent" / "samples" / "u4_outage_24h.pdf"
+    if not path.exists():
+        pytest.skip("agent/samples/u4_outage_24h.pdf not on this branch")
+    pytest.importorskip("pdfplumber")
+    res = schedule_parser.parse(path)
+    check_tasks(res)
+    assert len(res["tasks"]) == 20
+    assert res["summary"]["crosses_midnight"] >= 1

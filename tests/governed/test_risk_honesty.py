@@ -90,3 +90,15 @@ def test_forgotten_lesson_disappears_from_risk_evidence():
 def test_contractor_hidden_count_reported():
     report = risk.assess(CONTRACTOR, seed_like_tasks())
     assert isinstance(report["hidden_by_policy"], int) and report["hidden_by_policy"] >= 0
+
+
+@pytest.mark.parametrize("by", ["task", "discipline", "unit"])
+def test_heatmap_shape_and_range(by):
+    if not hasattr(risk, "heatmap"):
+        pytest.skip("risk.heatmap not on this branch")
+    tasks = seed_like_tasks() + [NONSENSE]
+    hm = risk.heatmap(tasks, risk.assess(PLANNER, tasks), by=by, bucket_hours=2)
+    assert len(hm["z"]) == len(hm["rows"]) and hm["rows"]
+    for row in hm["z"]:
+        assert len(row) == len(hm["cols"])
+        assert all(v is None or 0 <= v <= 100 for v in row)
