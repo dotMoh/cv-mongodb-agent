@@ -73,6 +73,42 @@ def load_seed() -> tuple[list[dict], list[dict]]:
     return seed_docs(), []
 
 
+RESTRICTED = "[restricted]"
+
+
+def _redact(doc: dict, redact) -> dict:
+    """redact = {"fields": [...], "sensitivities": [...]}: replace those fields on lessons of those sensitivities."""
+    if not redact or doc.get("sensitivity") not in redact["sensitivities"]:
+        return doc
+    for f in redact["fields"]:
+        if f == "links.note":
+            doc["links"] = [dict(l, note=RESTRICTED) for l in doc.get("links") or []]
+        elif f == "evidence":
+            doc["evidence"] = [{"type": RESTRICTED, "ref": RESTRICTED, "detail": RESTRICTED}] if doc.get("evidence") else []
+        elif doc.get(f) is not None:
+            doc[f] = RESTRICTED
+    doc["redacted"] = True
+    return doc
+
+
+def _redact_stages(redact) -> list[dict]:
+    """The same redaction as a $set stage, so redacted text never leaves Atlas."""
+    if not redact:
+        return []
+    hit = {"$in": ["$sensitivity", list(redact["sensitivities"])]}
+    sets = {"redacted": hit}
+    for f in redact["fields"]:
+        if f == "links.note":
+            sets["links"] = {"$cond": [hit, {"$map": {"input": {"$ifNull": ["$links", []]}, "as": "l", "in": {
+                "lesson_id": "$$l.lesson_id", "type": "$$l.type", "note": RESTRICTED}}}, "$links"]}
+        elif f == "evidence":
+            sets["evidence"] = {"$cond": [hit, {"$literal": [{"type": RESTRICTED, "ref": RESTRICTED, "detail": RESTRICTED}]},
+                                          "$evidence"]}
+        else:
+            sets[f] = {"$cond": [{"$and": [hit, {"$ne": [{"$ifNull": ["$" + f, None]}, None]}]}, RESTRICTED, "$" + f]}
+    return [{"$set": sets}]
+
+
 class MockStore:
     def __init__(self):
         self.reset()
@@ -112,20 +148,21 @@ class MockStore:
     def lessons_find(self, query: dict | None = None) -> list[dict]:
         return [_public(d) for d in self.lessons if _match(d, query or {})]
 
-    def lessons_search(self, text: str, k: int, query: dict) -> list[tuple[dict, float]]:
+    def lessons_search(self, text: str, k: int, query: dict, redact=None) -> list[tuple[dict, float]]:
         qv = embed(text) if embed_mode() == "minilm" else None
         idf = None if qv else idf_table([embed_text(d) for d in self.lessons])
         hits = [(d, similarity(text, embed_text(d), d.get("embedding"), qv, idf)) for d in self.lessons if _match(d, query)]
         hits.sort(key=lambda h: h[1], reverse=True)
-        return [(_public(d), round(s, 3)) for d, s in hits[:k]]
+        return [(_redact(_public(d), redact), round(s, 3)) for d, s in hits[:k]]
 
 
-    def lessons_graph(self, restrict: dict, max_depth: int = 1, seed_ids=None, text=None, k: int = 3):
+    def lessons_graph(self, restrict: dict, max_depth: int = 1, seed_ids=None, text=None, k: int = 3, redact=None):
         """Seeds (by lesson_id, or by vector search on text) plus lessons reachable over `links`, like $graphLookup."""
         if text:
-            seeds = [d for d, _ in self.lessons_search(text, k, restrict)]
+            seeds = [d for d, _ in self.lessons_search(text, k, restrict, redact)]
         else:
-            seeds = [_public(d) for d in self.lessons if d["lesson_id"] in (seed_ids or []) and _match(d, restrict)]
+            seeds = [_redact(_public(d), redact) for d in self.lessons
+                     if d["lesson_id"] in (seed_ids or []) and _match(d, restrict)]
         allowed = {d["lesson_id"]: d for d in self.lessons if _match(d, restrict)}
         out = []
         for seed in seeds:
@@ -137,7 +174,7 @@ class MockStore:
                         lid = ln.get("lesson_id")
                         if lid in allowed and lid not in seen:
                             seen.add(lid)
-                            doc = dict(_public(allowed[lid]), hops=hops)
+                            doc = dict(_redact(_public(allowed[lid]), redact), hops=hops)
                             chain.append(doc)
                             nxt.append(doc)
                 frontier = nxt
@@ -197,13 +234,13 @@ class MongoStore:
     def lessons_find(self, query: dict | None = None) -> list[dict]:
         return [_public(d) for d in self.lessons.find(query or {}, {"embedding": 0})]
 
-    def lessons_search(self, text: str, k: int, query: dict) -> list[tuple[dict, float]]:
+    def lessons_search(self, text: str, k: int, query: dict, redact=None) -> list[tuple[dict, float]]:
         pipeline = [
             {"$vectorSearch": {"index": config.LESSON_VECTOR_INDEX, "path": "embedding",
                                "queryVector": embed(text), "numCandidates": max(100, k * 20),
                                "limit": k, "filter": query}},
             {"$project": {"embedding": 0, "score": {"$meta": "vectorSearchScore"}}},
-        ]
+        ] + _redact_stages(redact)
         out = []
         for d in self.lessons.aggregate(pipeline):
             # Atlas cosine score is (1 + cos) / 2; convert back to cosine so thresholds match mock.
@@ -212,7 +249,7 @@ class MongoStore:
         return out
 
 
-    def lessons_graph(self, restrict: dict, max_depth: int = 1, seed_ids=None, text=None, k: int = 3):
+    def lessons_graph(self, restrict: dict, max_depth: int = 1, seed_ids=None, text=None, k: int = 3, redact=None):
         """$vectorSearch (or $match on ids) for seed lessons, then $graphLookup over links.lesson_id,
         restricted to lessons the role may read."""
         if text:
@@ -227,10 +264,10 @@ class MongoStore:
                               "as": "chain", "maxDepth": max_depth, "depthField": "hops",
                               "restrictSearchWithMatch": restrict}},
             {"$project": {"embedding": 0, "chain.embedding": 0}},
-        ]
+        ] + _redact_stages(redact)
         out = []
         for d in self.lessons.aggregate(pipeline):
-            chain = [_public(c) for c in d.pop("chain", []) if c.get("lesson_id") != d.get("lesson_id")]
+            chain = [_redact(_public(c), redact) for c in d.pop("chain", []) if c.get("lesson_id") != d.get("lesson_id")]
             out.append(dict(_public(d), chain=sorted(chain, key=lambda c: c.get("hops", 0))))
         return out
 

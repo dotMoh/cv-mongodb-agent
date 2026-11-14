@@ -43,12 +43,14 @@ def assess_task(user_id: str, t: dict, tasks: list[dict], _seen: dict | None = N
     if _seen is not None:
         for l in res["lessons"]:
             _seen["used"].setdefault(l["lesson_id"], l["version"])
+            if l.get("redacted"):
+                _seen.setdefault("redacted", set()).add(l["lesson_id"])
         for lid in res["hidden_ids"]:
             _seen["hidden"].add(lid)
     matches = [{"lesson_id": l["lesson_id"], "version": l["version"], "title": l.get("title"),
                 "similarity": round(l["similarity"], 3), "delay_days": float(l.get("delay_days") or 0),
                 "category": l.get("category"), "unit": l.get("unit"), "recommendation": l.get("recommendation"),
-                "sensitivity": l.get("sensitivity")} for l in res["lessons"]]
+                "sensitivity": l.get("sensitivity"), "redacted": bool(l.get("redacted"))} for l in res["lessons"]]
     base = {"task_id": t["id"], "task_name": t.get("name"), "critical": bool(t.get("critical")),
             "knock_on": successors(tasks, t["id"]), "hidden_matches": res["hidden_count"]}
     if not matches:
@@ -95,6 +97,10 @@ def assess(user_id: str, tasks: list[dict], use_memory: bool = True) -> dict:
     for lid in sorted(seen["hidden"]):
         governance.audit(user_id, "retrieve_denied", allowed=False, lesson_id=lid,
                          detail="matching lesson hidden by policy")
+    redacted = sorted(seen.get("redacted", ()))
+    if redacted:  # one entry per assessment, so judges can see the redaction without flooding the log
+        governance.audit(user_id, "redact", lesson_id=None, detail=f"{len(redacted)} lessons shown with "
+                         f"evidence/notes redacted for role {governance.role_of(user_id)}: {', '.join(redacted)}"[:200])
     at_risk = [r for r in rows if r["risk_pct"] > 0]
     # Overall = mean of the three highest-risk critical-path tasks (all tasks if none are critical).
     pool = [r["risk_pct"] for r in rows if r["critical"]] or [r["risk_pct"] for r in rows]
@@ -115,6 +121,7 @@ def assess(user_id: str, tasks: list[dict], use_memory: bool = True) -> dict:
         },
         "tasks": rows,
         "hidden_by_policy": len(seen["hidden"]),
+        "redacted_lessons": redacted,
         "memory": use_memory,
     }
 
