@@ -138,6 +138,31 @@ def retrieve(user_id: str, query: str, k: int = 5, unit: str | None = None, min_
     return {"lessons": hits, "hidden_count": len(hidden), "hidden_ids": [d["lesson_id"] for d in hidden]}
 
 
+def lesson_chain(user_id: str, seed_ids=None, query: str | None = None, k: int = 3, max_hops: int = 2,
+                 log: bool = True) -> list[dict]:
+    """Lesson graph: seed lessons (given ids, or $vectorSearch on query) plus linked lessons up to max_hops away
+    via `links: [{lesson_id, type}]` ($graphLookup in Atlas). Role policy applies to every hop.
+    Returns [{"lesson_id", "version", "title", ..., "chain": [{lesson_id, version, title, ..., hops, type, via}]}]."""
+    role = role_of(user_id)
+    flt = policy_filter(role)
+    try:
+        seeds = get_store().lessons_graph(flt, max(0, max_hops - 1), seed_ids=seed_ids, text=query, k=k)
+    except Exception:  # graph is an extra; never break the answer
+        return []
+    for s in seeds:
+        nodes = [s] + s["chain"]
+        for c in s["chain"]:
+            c["hops"] = int(c.get("hops", 0)) + 1
+            parent = next((n for n in nodes if any(l.get("lesson_id") == c["lesson_id"] for l in n.get("links") or [])), None)
+            c["via"] = parent["lesson_id"] if parent else s["lesson_id"]
+            c["type"] = next((l.get("type", "linked") for l in (parent or s).get("links") or []
+                              if l.get("lesson_id") == c["lesson_id"]), "linked")
+        if log and s["chain"]:
+            audit(user_id, "retrieve", lesson_id=s["lesson_id"], version=s["version"],
+                  detail="graph: " + ", ".join(f"{c['type']} {c['lesson_id']}" for c in s["chain"])[:150])
+    return seeds
+
+
 def history(user_id: str, lesson_id: str) -> list[dict]:
     """All versions, oldest first. Lead sees any lesson; others only lessons they may read."""
     role = role_of(user_id)

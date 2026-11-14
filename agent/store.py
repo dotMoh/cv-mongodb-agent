@@ -119,6 +119,31 @@ class MockStore:
         hits.sort(key=lambda h: h[1], reverse=True)
         return [(_public(d), round(s, 3)) for d, s in hits[:k]]
 
+
+    def lessons_graph(self, restrict: dict, max_depth: int = 1, seed_ids=None, text=None, k: int = 3):
+        """Seeds (by lesson_id, or by vector search on text) plus lessons reachable over `links`, like $graphLookup."""
+        if text:
+            seeds = [d for d, _ in self.lessons_search(text, k, restrict)]
+        else:
+            seeds = [_public(d) for d in self.lessons if d["lesson_id"] in (seed_ids or []) and _match(d, restrict)]
+        allowed = {d["lesson_id"]: d for d in self.lessons if _match(d, restrict)}
+        out = []
+        for seed in seeds:
+            seen, frontier, chain = {seed["lesson_id"]}, [seed], []
+            for hops in range(max_depth + 1):
+                nxt = []
+                for node in frontier:
+                    for ln in node.get("links") or []:
+                        lid = ln.get("lesson_id")
+                        if lid in allowed and lid not in seen:
+                            seen.add(lid)
+                            doc = dict(_public(allowed[lid]), hops=hops)
+                            chain.append(doc)
+                            nxt.append(doc)
+                frontier = nxt
+            out.append(dict(seed, chain=chain))
+        return out
+
     # audit
     def audit_insert(self, entry: dict) -> None:
         self.audit.append(copy.deepcopy(entry))
@@ -184,6 +209,29 @@ class MongoStore:
             # Atlas cosine score is (1 + cos) / 2; convert back to cosine so thresholds match mock.
             score = d.pop("score", 0.0)
             out.append((_public(d), round(2 * score - 1, 3)))
+        return out
+
+
+    def lessons_graph(self, restrict: dict, max_depth: int = 1, seed_ids=None, text=None, k: int = 3):
+        """$vectorSearch (or $match on ids) for seed lessons, then $graphLookup over links.lesson_id,
+        restricted to lessons the role may read."""
+        if text:
+            first = [{"$vectorSearch": {"index": config.LESSON_VECTOR_INDEX, "path": "embedding",
+                                        "queryVector": embed(text), "numCandidates": max(100, k * 20),
+                                        "limit": k, "filter": restrict}}]
+        else:
+            first = [{"$match": {"$and": [restrict, {"lesson_id": {"$in": list(seed_ids or [])}}]}}]
+        pipeline = first + [
+            {"$graphLookup": {"from": self.lessons.name, "startWith": "$links.lesson_id",
+                              "connectFromField": "links.lesson_id", "connectToField": "lesson_id",
+                              "as": "chain", "maxDepth": max_depth, "depthField": "hops",
+                              "restrictSearchWithMatch": restrict}},
+            {"$project": {"embedding": 0, "chain.embedding": 0}},
+        ]
+        out = []
+        for d in self.lessons.aggregate(pipeline):
+            chain = [_public(c) for c in d.pop("chain", []) if c.get("lesson_id") != d.get("lesson_id")]
+            out.append(dict(_public(d), chain=sorted(chain, key=lambda c: c.get("hops", 0))))
         return out
 
     def audit_insert(self, entry: dict) -> None:
