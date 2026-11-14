@@ -63,7 +63,7 @@ def _anthropic(system, user, as_json, timeout):
     client = _get_client()
     if timeout:
         client = client.with_options(timeout=max(timeout, 20.0))
-    # Opus 5.5 always uses adaptive thinking; low effort keeps chat answers fast.
+    # Fable 5.2 (and Opus 5.5) always think adaptively; low effort keeps chat answers fast.
     # fallbacks="default": if a safety classifier declines, the API retries on Anthropic's recommended model.
     resp = client.beta.messages.create(
         model=config.ANTHROPIC_MODEL,

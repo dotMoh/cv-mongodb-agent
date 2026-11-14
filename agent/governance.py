@@ -50,6 +50,8 @@ def role_of(user_id: str) -> str:
 
 
 def audit(user_id: str, action: str, allowed: bool = True, lesson_id=None, version=None, detail: str = "", now=None):
+    if action == "retrieve" and allowed and not config.LOG_READS:
+        return  # reads are not logged by default (speed); writes and blocked attempts always are
     get_store().audit_insert({
         "ts": _aware(now) or now_utc(), "user_id": user_id, "role": USERS.get(user_id, "system"),
         "action": action, "lesson_id": lesson_id, "version": version, "allowed": allowed, "detail": detail,
@@ -135,7 +137,8 @@ def retrieve(user_id: str, query: str, k: int = 5, unit: str | None = None, min_
     hits = [dict(d, similarity=s) for d, s in store.lessons_search(query, k, flt) if s >= thr]
     # What would have matched without the role policy (to report hidden lessons honestly).
     all_flt = {"status": "approved", **({"unit": unit} if unit else {})}
-    hidden = [d for d, s in store.lessons_search(query, k + 10, all_flt) if s >= thr and not can_read(role, d)]
+    hidden = [] if config.OPEN_READS else \
+        [d for d, s in store.lessons_search(query, k + 10, all_flt) if s >= thr and not can_read(role, d)]
     if log:
         for d in hits:
             audit(user_id, "retrieve", lesson_id=d["lesson_id"], version=d["version"], detail=f"query: {query[:80]}")
