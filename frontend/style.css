@@ -1,0 +1,164 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fa;
+  color: #1d2430;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 28px;
+  background: #102a43;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+.sub {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+.badge {
+  display: inline-block;
+  background: #d8f3dc;
+  color: #1d4d3d;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+}
+main {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.2fr;
+  gap: 20px;
+  padding: 20px;
+}
+.panel {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(17,24,39,0.08);
+}
+#ask {
+  min-width: 0;
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+textarea, select, button {
+  width: 100%;
+  margin-top: 6px;
+  font: inherit;
+}
+textarea, select {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fff;
+}
+textarea {
+  resize: vertical;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+button.secondary {
+  background: #0f766e;
+}
+button:hover {
+  opacity: 0.95;
+}
+#result h2, #map-panel h2 {
+  margin-top: 0;
+}
+#schedule {
+  padding-left: 1.2rem;
+  margin: 0 0 18px;
+}
+#schedule li {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #dfe7f2;
+}
+#schedule li.shifted {
+  border-color: #dc2626;
+  box-shadow: inset 0 0 0 1px rgba(220,38,38,0.2);
+}
+.schedule-title {
+  font-weight: 700;
+}
+.schedule-meta {
+  display: block;
+  font-size: 0.9rem;
+  color: #475569;
+  margin-top: 4px;
+}
+.schedule-note {
+  display: block;
+  margin-top: 6px;
+  color: #334155;
+  font-size: 0.92rem;
+}
+.muted {
+  color: #64748b;
+}
+.small {
+  font-size: 0.85rem;
+}
+#memories {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+#memories li {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+#memories .meta {
+  display: block;
+  color: #475569;
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+#map {
+  width: 100%;
+  height: 320px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border: 1px solid #dfe7f2;
+}
+.status {
+  min-height: 1.2em;
+  margin-top: 10px;
+  color: #0f766e;
+  font-weight: 600;
+}
+@media (max-width: 980px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}

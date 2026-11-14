@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outage Planning Agent</title>
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Outage Planning Agent</h1>
+    <span class="sub">Remembers past outages so the next one goes better</span>
+    <span id="mode-badge" class="badge"></span>
+  </header>
+
+  <main>
+    <section class="panel" id="ask">
+      <h2>Plan an outage</h2>
+      <form id="plan-form">
+        <label>Task
+          <textarea id="task" rows="3" placeholder="e.g. Plan July maintenance outage for Unit 3">Plan July maintenance outage for Unit 3</textarea>
+        </label>
+        <div class="row">
+          <label>Role
+            <select id="role">
+              <option value="planner">Planner</option>
+              <option value="safety_officer">Safety Officer</option>
+              <option value="grid_operator">Grid Operator</option>
+            </select>
+          </label>
+          <label>Plant
+            <select id="plant">
+              <option value="unit-3">Unit 3</option>
+              <option value="unit-1">Unit 1</option>
+              <option value="unit-5">Unit 5</option>
+            </select>
+          </label>
+        </div>
+        <button type="submit" id="plan-btn">Generate plan</button>
+      </form>
+
+      <h2>Teach the agent</h2>
+      <form id="learn-form">
+        <label>New lesson or correction
+          <textarea id="lesson" rows="3" placeholder="e.g. Intake chiller retrofit done in 2025: July is now safe if work starts before 10am"></textarea>
+        </label>
+        <label>Corrects memory (optional)
+          <select id="corrects"><option value="">None, this is a new lesson</option></select>
+        </label>
+        <button type="submit" id="learn-btn" class="secondary">Save to memory</button>
+        <p id="learn-status" class="status"></p>
+      </form>
+    </section>
+
+    <section class="panel" id="result">
+      <h2>Schedule</h2>
+      <p id="summary" class="muted">Generate a plan to see the schedule.</p>
+      <ol id="schedule"></ol>
+
+      <h2>Memories used</h2>
+      <ul id="memories"><li class="muted">None yet.</li></ul>
+    </section>
+
+    <section class="panel" id="map-panel">
+      <h2>Past failure zones</h2>
+      <div id="map"></div>
+      <p class="muted small">Heat shows where past outages ran into trouble. Brighter means more or worse incidents.</p>
+    </section>
+  </main>
+
+  <script src="vendor/leaflet.js"></script>
+  <script src="vendor/leaflet-heat.js"></script>
+  <script src="mock.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

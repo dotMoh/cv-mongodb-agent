@@ -46,4 +46,4 @@ Plant ids follow the data thread: unit-1, unit-3 (default), unit-5.
 
 ## Demo script (works on mock today)
 1. Task "Plan July maintenance outage for Unit 3", role Planner, Generate plan. Shutdown moves to late June, citing the July 2024 overheating delay (mock-july-overheat).
-2. Teach: "Intake chiller retrofit done in 2025: July intake temps now safe for full outage", Corrects memory = mock-july-overheat, Save. Page re-plans: mock-july-overheat shows as corrected, new lesson is top memory, and the original July window comes back.
+2. Teach: "Intake chiller retrofit done in 2025: July intake temps now safe for full outage", Corrects memory = m1, Save. Page re-plans: m1 shows as corrected, new lesson is top memory, and the original July window comes back.
