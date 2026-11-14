@@ -1,0 +1,1685 @@
+[
+  {
+    "demo_key": "mock-july-overheat",
+    "plant_id": "unit-3",
+    "title": "July 2024 Unit 3 outage slipped 6 days: cooling water intake",
+    "category": "cooling",
+    "content": "July 2024 Unit 3 outage slipped 6 days: cooling water intake too warm, condenser could not reject heat",
+    "delay_days": 6,
+    "event_date": "2024-07-15T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.07,
+        43.81
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 31,
+      "expires_at": null
+    }
+  },
+  {
+    "demo_key": "mock-2",
+    "plant_id": "unit-3",
+    "title": "Unit 3 turbine inspection in spring 2023 finished 2 days ear",
+    "category": "staffing",
+    "content": "Unit 3 turbine inspection in spring 2023 finished 2 days early after pre-staging scaffolding the week before",
+    "delay_days": 0,
+    "event_date": "2024-07-15T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.06,
+        43.8
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 12,
+      "expires_at": null
+    }
+  },
+  {
+    "demo_key": "mock-3",
+    "plant_id": "unit-3",
+    "title": "Unit 3 main transformer replacement needs grid operator sign",
+    "category": "grid",
+    "content": "Unit 3 main transformer replacement needs grid operator sign-off 14 days ahead; late notice cost 3 days in 2022",
+    "delay_days": 3,
+    "event_date": "2024-07-15T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.08,
+        43.82
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 18,
+      "expires_at": null
+    }
+  },
+  {
+    "demo_key": "mock-4",
+    "plant_id": "unit-3",
+    "title": "Steam generator eddy current testing on Unit 3 needs radiati",
+    "category": "safety",
+    "content": "Steam generator eddy current testing on Unit 3 needs radiation work permits approved 10 days before outage start",
+    "delay_days": 0,
+    "event_date": "2024-07-15T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.065,
+        43.805
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 20,
+      "expires_at": null
+    }
+  },
+  {
+    "demo_key": "mock-5",
+    "plant_id": "unit-3",
+    "title": "August 2023 heat wave: grid operator refused Unit 3 outage w",
+    "category": "grid",
+    "content": "August 2023 heat wave: grid operator refused Unit 3 outage window due to peak demand, outage moved to September",
+    "delay_days": 5,
+    "event_date": "2024-07-15T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.075,
+        43.815
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 33,
+      "expires_at": null
+    }
+  },
+  {
+    "demo_key": "mock-6",
+    "plant_id": "unit-1",
+    "title": "Unit 1 refuelling outage in October 2023 ran on schedule; cr",
+    "category": "parts",
+    "content": "Unit 1 refuelling outage in October 2023 ran on schedule; crane certification done one month early",
+    "delay_days": 0,
+    "event_date": "2024-07-15T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.72,
+        43.87
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 10,
+      "expires_at": null
+    }
+  },
+  {
+    "demo_key": "mock-7",
+    "plant_id": "unit-1",
+    "title": "Unit 1 feedwater pump seal failure found during startup adde",
+    "category": "parts",
+    "content": "Unit 1 feedwater pump seal failure found during startup added 4 days to the 2022 outage",
+    "delay_days": 4,
+    "event_date": "2024-07-15T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.73,
+        43.875
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 22,
+      "expires_at": null
+    }
+  },
+  {
+    "demo_key": "mock-8",
+    "plant_id": "unit-1",
+    "title": "Winter 2024 ice on Unit 1 intake screens delayed restart by ",
+    "category": "weather",
+    "content": "Winter 2024 ice on Unit 1 intake screens delayed restart by 2 days",
+    "delay_days": 2,
+    "event_date": "2024-07-15T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.71,
+        43.868
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": -8,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay August 2018",
+    "category": "cooling",
+    "content": "August 2018 Unit 1 outage slipped 5 days: cooling water intake temperature exceeded limits at 33C, condenser work paused.",
+    "delay_days": 5,
+    "event_date": "2018-08-22T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.73107,
+        43.87946
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 33,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay August 2019",
+    "category": "cooling",
+    "content": "August 2019 Unit 1: heat wave at 35C forced derate before outage start; maintenance window pushed 2 days.",
+    "delay_days": 2,
+    "event_date": "2019-08-17T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.73881,
+        43.85875
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 35,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 grid delay August 2018",
+    "category": "grid",
+    "content": "August 2018 Unit 1: grid operator refused outage start during peak demand (32C); rescheduled 8 days later.",
+    "delay_days": 8,
+    "event_date": "2018-08-08T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.714,
+        43.8718
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 32,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Unit 5 grid delay January 2022",
+    "category": "grid",
+    "content": "January 2022 Unit 5: transmission line maintenance on adjacent node overlapped outage, 6 day delay to reconnect.",
+    "delay_days": 6,
+    "event_date": "2022-01-07T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.0731,
+        43.07111
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": -5,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 staffing delay February 2023",
+    "category": "staffing",
+    "content": "February 2023 Unit 3: contractor crew shortage delayed turbine inspection 5 days.",
+    "delay_days": 5,
+    "event_date": "2023-02-20T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.08613,
+        43.8239
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": -10,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 parts delay January 2022",
+    "category": "parts",
+    "content": "January 2022 Unit 3: replacement valve arrived late from supplier, outage extended 9 days.",
+    "delay_days": 9,
+    "event_date": "2022-01-03T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.08501,
+        43.82689
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": 14,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 safety delay April 2023",
+    "category": "safety",
+    "content": "April 2023 Unit 2: radiation work permit backlog delayed steam generator inspection 1 days.",
+    "delay_days": 1,
+    "event_date": "2023-04-03T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.89355,
+        43.86092
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -11,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 safety delay June 2021",
+    "category": "safety",
+    "content": "June 2021 Unit 1: heat stress limits for workers at 35C cut shift lengths, outage ran 5 days long.",
+    "delay_days": 5,
+    "event_date": "2021-06-06T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.72186,
+        43.88336
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 35,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 weather delay January 2023",
+    "category": "weather",
+    "content": "January 2023 Unit 3: ice storm blocked site access, 7 day delay to crane work.",
+    "delay_days": 7,
+    "event_date": "2023-01-06T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.06408,
+        43.81437
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -4,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 weather delay November 2020",
+    "category": "weather",
+    "content": "November 2020 Unit 1: high winds above crane limits halted lifts for 2 days.",
+    "delay_days": 2,
+    "event_date": "2020-11-18T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70042,
+        43.8756
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 9,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay August 2021",
+    "category": "cooling",
+    "content": "August 2021 Unit 1 outage slipped 4 days: cooling water intake temperature exceeded limits at 34C, condenser work paused.",
+    "delay_days": 4,
+    "event_date": "2021-08-11T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.73084,
+        43.85128
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 34,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay July 2024",
+    "category": "cooling",
+    "content": "July 2024 Unit 1: heat wave at 30C forced derate before outage start; maintenance window pushed 3 days.",
+    "delay_days": 3,
+    "event_date": "2024-07-23T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70347,
+        43.87269
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 30,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 grid delay August 2021",
+    "category": "grid",
+    "content": "August 2021 Unit 2: grid operator refused outage start during peak demand (36C); rescheduled 6 days later.",
+    "delay_days": 6,
+    "event_date": "2021-08-05T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.88461,
+        43.85571
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 36,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 grid delay March 2022",
+    "category": "grid",
+    "content": "March 2022 Unit 1: transmission line maintenance on adjacent node overlapped outage, 6 day delay to reconnect.",
+    "delay_days": 6,
+    "event_date": "2022-03-19T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.71755,
+        43.86051
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 0,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 staffing delay October 2024",
+    "category": "staffing",
+    "content": "October 2024 Unit 1: contractor crew shortage delayed turbine inspection 3 days.",
+    "delay_days": 3,
+    "event_date": "2024-10-16T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70011,
+        43.85553
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": 8,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 parts delay February 2018",
+    "category": "parts",
+    "content": "February 2018 Unit 3: replacement valve arrived late from supplier, outage extended 10 days.",
+    "delay_days": 10,
+    "event_date": "2018-02-20T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.0836,
+        43.81722
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": -6,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 safety delay October 2019",
+    "category": "safety",
+    "content": "October 2019 Unit 1: radiation work permit backlog delayed steam generator inspection 5 days.",
+    "delay_days": 5,
+    "event_date": "2019-10-18T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70016,
+        43.87116
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 9,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 safety delay August 2018",
+    "category": "safety",
+    "content": "August 2018 Unit 1: heat stress limits for workers at 30C cut shift lengths, outage ran 8 days long.",
+    "delay_days": 8,
+    "event_date": "2018-08-25T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70461,
+        43.88004
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 30,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 weather delay February 2019",
+    "category": "weather",
+    "content": "February 2019 Unit 2: ice storm blocked site access, 2 day delay to crane work.",
+    "delay_days": 2,
+    "event_date": "2019-02-09T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.88185,
+        43.86503
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -8,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 weather delay December 2020",
+    "category": "weather",
+    "content": "December 2020 Unit 1: high winds above crane limits halted lifts for 5 days.",
+    "delay_days": 5,
+    "event_date": "2020-12-20T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.72806,
+        43.87556
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -9,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 cooling delay June 2021",
+    "category": "cooling",
+    "content": "June 2021 Unit 2 outage slipped 5 days: cooling water intake temperature exceeded limits at 34C, condenser work paused.",
+    "delay_days": 5,
+    "event_date": "2021-06-17T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.89842,
+        43.86115
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 34,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay July 2023",
+    "category": "cooling",
+    "content": "July 2023 Unit 1: heat wave at 29C forced derate before outage start; maintenance window pushed 2 days.",
+    "delay_days": 2,
+    "event_date": "2023-07-27T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70284,
+        43.88515
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 29,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 grid delay June 2022",
+    "category": "grid",
+    "content": "June 2022 Unit 2: grid operator refused outage start during peak demand (29C); rescheduled 4 days later.",
+    "delay_days": 4,
+    "event_date": "2022-06-03T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.88488,
+        43.86788
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 29,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 grid delay February 2025",
+    "category": "grid",
+    "content": "February 2025 Unit 2: transmission line maintenance on adjacent node overlapped outage, 2 day delay to reconnect.",
+    "delay_days": 2,
+    "event_date": "2025-02-18T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.91486,
+        43.84901
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 19,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 staffing delay December 2022",
+    "category": "staffing",
+    "content": "December 2022 Unit 1: contractor crew shortage delayed turbine inspection 3 days.",
+    "delay_days": 3,
+    "event_date": "2022-12-23T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70284,
+        43.88021
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": 12,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 parts delay May 2021",
+    "category": "parts",
+    "content": "May 2021 Unit 2: replacement valve arrived late from supplier, outage extended 10 days.",
+    "delay_days": 10,
+    "event_date": "2021-05-17T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.894,
+        43.84752
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": 10,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 safety delay February 2025",
+    "category": "safety",
+    "content": "February 2025 Unit 2: radiation work permit backlog delayed steam generator inspection 2 days.",
+    "delay_days": 2,
+    "event_date": "2025-02-18T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.91744,
+        43.83084
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 0,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 safety delay June 2021",
+    "category": "safety",
+    "content": "June 2021 Unit 1: heat stress limits for workers at 30C cut shift lengths, outage ran 8 days long.",
+    "delay_days": 8,
+    "event_date": "2021-06-02T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.71476,
+        43.85916
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 30,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 weather delay December 2023",
+    "category": "weather",
+    "content": "December 2023 Unit 2: ice storm blocked site access, 7 day delay to crane work.",
+    "delay_days": 7,
+    "event_date": "2023-12-24T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.90058,
+        43.85157
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -11,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 weather delay April 2025",
+    "category": "weather",
+    "content": "April 2025 Unit 2: high winds above crane limits halted lifts for 3 days.",
+    "delay_days": 3,
+    "event_date": "2025-04-14T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.91238,
+        43.83388
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 15,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 cooling delay July 2024",
+    "category": "cooling",
+    "content": "July 2024 Unit 2 outage slipped 9 days: cooling water intake temperature exceeded limits at 36C, condenser work paused.",
+    "delay_days": 9,
+    "event_date": "2024-07-21T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.91783,
+        43.85614
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 36,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Unit 5 cooling delay June 2019",
+    "category": "cooling",
+    "content": "June 2019 Unit 5: heat wave at 35C forced derate before outage start; maintenance window pushed 7 days.",
+    "delay_days": 7,
+    "event_date": "2019-06-08T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.07643,
+        43.09447
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 35,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Unit 5 grid delay June 2021",
+    "category": "grid",
+    "content": "June 2021 Unit 5: grid operator refused outage start during peak demand (36C); rescheduled 4 days later.",
+    "delay_days": 4,
+    "event_date": "2021-06-08T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.07312,
+        43.07114
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 36,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 grid delay December 2025",
+    "category": "grid",
+    "content": "December 2025 Unit 3: transmission line maintenance on adjacent node overlapped outage, 1 day delay to reconnect.",
+    "delay_days": 1,
+    "event_date": "2025-12-01T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.06391,
+        43.81162
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": -9,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Unit 5 staffing delay April 2019",
+    "category": "staffing",
+    "content": "April 2019 Unit 5: contractor crew shortage delayed turbine inspection 5 days.",
+    "delay_days": 5,
+    "event_date": "2019-04-13T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.07057,
+        43.06855
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": -5,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Unit 5 parts delay March 2018",
+    "category": "parts",
+    "content": "March 2018 Unit 5: replacement valve arrived late from supplier, outage extended 5 days.",
+    "delay_days": 5,
+    "event_date": "2018-03-26T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.05059,
+        43.07061
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": 9,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Unit 5 safety delay October 2022",
+    "category": "safety",
+    "content": "October 2022 Unit 5: radiation work permit backlog delayed steam generator inspection 6 days.",
+    "delay_days": 6,
+    "event_date": "2022-10-10T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.06126,
+        43.06619
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 20,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Unit 5 safety delay June 2021",
+    "category": "safety",
+    "content": "June 2021 Unit 5: heat stress limits for workers at 29C cut shift lengths, outage ran 8 days long.",
+    "delay_days": 8,
+    "event_date": "2021-06-16T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.07746,
+        43.06201
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 29,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Unit 5 weather delay December 2020",
+    "category": "weather",
+    "content": "December 2020 Unit 5: ice storm blocked site access, 3 day delay to crane work.",
+    "delay_days": 3,
+    "event_date": "2020-12-28T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.08726,
+        43.06272
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -2,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 weather delay February 2024",
+    "category": "weather",
+    "content": "February 2024 Unit 1: high winds above crane limits halted lifts for 1 days.",
+    "delay_days": 1,
+    "event_date": "2024-02-03T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.71684,
+        43.85159
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 21,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay August 2024",
+    "category": "cooling",
+    "content": "August 2024 Unit 1 outage slipped 6 days: cooling water intake temperature exceeded limits at 34C, condenser work paused.",
+    "delay_days": 6,
+    "event_date": "2024-08-08T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.73183,
+        43.87865
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 34,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay July 2022",
+    "category": "cooling",
+    "content": "July 2022 Unit 1: heat wave at 31C forced derate before outage start; maintenance window pushed 7 days.",
+    "delay_days": 7,
+    "event_date": "2022-07-25T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.71418,
+        43.86829
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 31,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 grid delay July 2018",
+    "category": "grid",
+    "content": "July 2018 Unit 1: grid operator refused outage start during peak demand (30C); rescheduled 3 days later.",
+    "delay_days": 3,
+    "event_date": "2018-07-05T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.71849,
+        43.87024
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 30,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 grid delay February 2023",
+    "category": "grid",
+    "content": "February 2023 Unit 3: transmission line maintenance on adjacent node overlapped outage, 3 day delay to reconnect.",
+    "delay_days": 3,
+    "event_date": "2023-02-18T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.0786,
+        43.80753
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 0,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 staffing delay December 2022",
+    "category": "staffing",
+    "content": "December 2022 Unit 3: contractor crew shortage delayed turbine inspection 7 days.",
+    "delay_days": 7,
+    "event_date": "2022-12-22T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.05732,
+        43.80198
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": -15,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 parts delay May 2020",
+    "category": "parts",
+    "content": "May 2020 Unit 3: replacement valve arrived late from supplier, outage extended 5 days.",
+    "delay_days": 5,
+    "event_date": "2020-05-10T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.0603,
+        43.79622
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": -8,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 safety delay September 2021",
+    "category": "safety",
+    "content": "September 2021 Unit 3: radiation work permit backlog delayed steam generator inspection 6 days.",
+    "delay_days": 6,
+    "event_date": "2021-09-16T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.06463,
+        43.80056
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -2,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 safety delay June 2022",
+    "category": "safety",
+    "content": "June 2022 Unit 1: heat stress limits for workers at 30C cut shift lengths, outage ran 8 days long.",
+    "delay_days": 8,
+    "event_date": "2022-06-01T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.72306,
+        43.86107
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 30,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 weather delay January 2020",
+    "category": "weather",
+    "content": "January 2020 Unit 2: ice storm blocked site access, 7 day delay to crane work.",
+    "delay_days": 7,
+    "event_date": "2020-01-03T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.90289,
+        43.83039
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -7,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 weather delay December 2020",
+    "category": "weather",
+    "content": "December 2020 Unit 3: high winds above crane limits halted lifts for 2 days.",
+    "delay_days": 2,
+    "event_date": "2020-12-05T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.0667,
+        43.79592
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -13,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay July 2018",
+    "category": "cooling",
+    "content": "July 2018 Unit 1 outage slipped 4 days: cooling water intake temperature exceeded limits at 34C, condenser work paused.",
+    "delay_days": 4,
+    "event_date": "2018-07-08T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70404,
+        43.8584
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 34,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 cooling delay August 2023",
+    "category": "cooling",
+    "content": "August 2023 Unit 1: heat wave at 35C forced derate before outage start; maintenance window pushed 6 days.",
+    "delay_days": 6,
+    "event_date": "2023-08-08T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.71002,
+        43.88703
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 35,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 grid delay June 2020",
+    "category": "grid",
+    "content": "June 2020 Unit 1: grid operator refused outage start during peak demand (35C); rescheduled 3 days later.",
+    "delay_days": 3,
+    "event_date": "2020-06-26T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.73283,
+        43.88698
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 35,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 grid delay April 2024",
+    "category": "grid",
+    "content": "April 2024 Unit 1: transmission line maintenance on adjacent node overlapped outage, 2 day delay to reconnect.",
+    "delay_days": 2,
+    "event_date": "2024-04-28T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70851,
+        43.85432
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator"
+      ],
+      "status": "active",
+      "temperature_celsius": 2,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Unit 3 staffing delay April 2025",
+    "category": "staffing",
+    "content": "April 2025 Unit 3: contractor crew shortage delayed turbine inspection 5 days.",
+    "delay_days": 5,
+    "event_date": "2025-04-28T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.07601,
+        43.82282
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": -3,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 parts delay April 2021",
+    "category": "parts",
+    "content": "April 2021 Unit 1: replacement valve arrived late from supplier, outage extended 10 days.",
+    "delay_days": 10,
+    "event_date": "2021-04-28T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.73227,
+        43.86313
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner"
+      ],
+      "status": "active",
+      "temperature_celsius": -14,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 safety delay May 2019",
+    "category": "safety",
+    "content": "May 2019 Unit 1: radiation work permit backlog delayed steam generator inspection 6 days.",
+    "delay_days": 6,
+    "event_date": "2019-05-27T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.71962,
+        43.87718
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 7,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-2",
+    "title": "Unit 2 safety delay June 2018",
+    "category": "safety",
+    "content": "June 2018 Unit 2: heat stress limits for workers at 33C cut shift lengths, outage ran 4 days long.",
+    "delay_days": 4,
+    "event_date": "2018-06-02T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.89678,
+        43.86934
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": 33,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 weather delay February 2019",
+    "category": "weather",
+    "content": "February 2019 Unit 1: ice storm blocked site access, 6 day delay to crane work.",
+    "delay_days": 6,
+    "event_date": "2019-02-19T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.70063,
+        43.85463
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -9,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-1",
+    "title": "Unit 1 weather delay May 2021",
+    "category": "weather",
+    "content": "May 2021 Unit 1: high winds above crane limits halted lifts for 5 days.",
+    "delay_days": 5,
+    "event_date": "2021-05-26T00:00:00+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -78.72256,
+        43.8708
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": -13,
+      "expires_at": null
+    }
+  },
+  {
+    "plant_id": "unit-3",
+    "title": "Temporary constraint",
+    "category": "constraint",
+    "content": "Temporary: east crane out of service for recertification, no heavy lifts at Unit 3.",
+    "delay_days": 0,
+    "event_date": "2026-11-14T15:45:04.772971+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.07,
+        43.81
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": null,
+      "expires_at": "2026-11-28T15:45:04.772971+00:00"
+    }
+  },
+  {
+    "plant_id": "unit-5",
+    "title": "Temporary constraint",
+    "category": "constraint",
+    "content": "Temporary: grid operator restricts Unit 5 outages during the regional line upgrade.",
+    "delay_days": 0,
+    "event_date": "2026-11-14T15:45:04.772971+00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -79.07,
+        43.08
+      ]
+    },
+    "metadata": {
+      "access_level": [
+        "planner",
+        "grid_operator",
+        "safety_officer"
+      ],
+      "status": "active",
+      "temperature_celsius": null,
+      "expires_at": "2026-12-14T15:45:04.772971+00:00"
+    }
+  }
+]
